@@ -1,0 +1,45 @@
+\documentclass[11pt,a4paper,twoside]{article}
+
+
+% ----
+% User-specific packages
+
+\usepackage{marginnote}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\input{requirements}
+% ----
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{fontspec}
+\setmainfont[Extension=.otf,
+ UprightFont=*-regular,
+ BoldFont=*-bold,
+ ItalicFont=*-italic,
+ BoldItalicFont=*-bolditalic,
+]{xits}
+\usepackage{unicode-math}
+\setmathfont[Extension=.otf,
+ BoldFont=*bold,
+]{xits-math}
+\let\cyrillicfonttt\ttfamily
+\setmainlanguage{russian}
+
+\usepackage{biblatex}
+\addbibresource{current-problems-2017.bib}
+
+\title{Исследование спектральных свойств матриц
+смежностей орграфов специального вида
+методом подобных операторов}
+\author{Сергей Козлуков}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+    \input{body/abstract}
+\end{abstract}
+
+\input{body/root}
+\printbibliography
+
+\end{document}

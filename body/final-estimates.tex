@@ -1,0 +1,43 @@
+Верн\"емся, наконец, к~непосредственному доказательству основной теоремы:
+\begin{proof}[Доказательство Теоремы~\ref{kozlukovsv:thm:almost-all-ones}]
+    Для доказательства осталось лишь выбрать подходящую субмультипликативную норму.
+    Заметим, что матрица \( \mathcal{U} \),
+    приводящая \( \mathcal{J}_N \) к~диагональному виду
+    является ортогональной,
+    поэтому умножение на \( \mathcal{U} \) или \(\mathcal{U}^{-1}\)
+    есть изометрия в \( \mathbb{C}^N \) с евклидовой нормой.
+    Следовательно, \( \|\mathcal{B}\|=\|B\| \).
+    Рассмотрим в~пространстве \( \mathbb{C}^{N{\times}N} \)
+    норму Фробениуса \( {\left\|\cdot\right\|}_{F} \),
+    определ\"енную формулой
+    \( {\left\|X\right\|}_{F} = \sqrt{\sum_{ij} \lvert x_{ij}\rvert^2}, \)
+    \( X = (x_{ij})\in\mathbb{C}^{N{\times}N} \).
+    Она субмультипликативна.
+    При этом
+    \( B \) состоит из \( M \) единиц, поэтому
+    \[
+        \beta = {\left\|B\right\|}_{F} =
+        {\left\|B\right\|}_{F} = \sqrt{M}.
+        \]
+    
+    Если
+     \( \sqrt{M} < \frac{N}{4} \),
+     то выполняются условия леммы,
+     прич\"ем \( r_0 < 4\sqrt{M} \).
+    Это значит, что
+     \( \sigma(A) = \sigma_1 \cup \sigma_2 \),
+     где \( \sigma_1 = \{ \lambda_1 \}\subset\mathbb{R}, \lvert \lambda_1 - N \rvert < 4\sqrt{M} \),
+     \( \sigma_2 \subset \{ \mu\in\mathbb{C}; \lvert\mu\rvert < 4\sqrt{M} \} \),
+     \( \sigma_1 \cap \sigma_2 = \emptyset \).
+
+     Наконец, собственному значению \( N - x_{11}^o \)
+     матрицы \( A \)
+     соответствует собственный вектор
+     \[
+         v_1 = \mathcal{U}(E+\Gamma X^o) \begin{pmatrix}1\\0\end{pmatrix}
+             = \frac{1}{\sqrt{N}} \begin{pmatrix}1\\ \vdots \\ 1\end{pmatrix}
+                 + \mathcal{U}\Gamma X^o \begin{pmatrix}1\\0\end{pmatrix}, \]
+     где \( \|\mathcal{U}\Gamma X^o \begin{pmatrix}1\\0\end{pmatrix}\|_2 \leq \frac{4\beta}{N} \leq \frac{4\sqrt{M}}{N} \).
+
+    Теорема доказана.
+    \end{proof}

@@ -1,0 +1,62 @@
+Доказательство состоит в~построении уравнения для матрицы, подобной \( A \),
+ но устроеной ``проще''. Решение возникающего нелинейного уравнения
+ в~банаховой алгебре \( \mathbb{C}^{N{\times}N} \)
+ матриц размера \( N{\times}N \)
+ доставляется методом простых итераций (см., например,~\cite{baskakov-harmonic}).
+
+Подобие матриц \( \mathcal{A}_1, \mathcal{A}_2 \)
+ понимается в~смысле существования обратимой матрицы \( \mathcal{U} \),
+ такой что \( \mathcal{A}_1 \mathcal{U} = \mathcal{U} \mathcal{A}_2 \).
+Подобные матрицы изоспектральны (их спектры совпадают).
+
+Провед\"ем предварительные преобразования.
+
+\begin{ksvlem}
+    Матрица единиц 
+    \( \mathcal{J}_N =
+    \begin{pmatrix}
+        1 & \cdots & 1 \\
+        \vdots & \ddots & \vdots \\ 
+    1 & \cdots & 1 \end{pmatrix} \),
+    подобна матрице
+    \[
+        \mathcal{A} = \begin{pmatrix}
+            N & 0 & \cdots & 0 \\
+            0 & 0 & \cdots & 0 \\
+            \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & \cdots & 0 \end{pmatrix}. \]
+    Точнее, существует ортогональная матрица \( \mathcal{U} \),
+    такая что
+    \( \mathcal{J}_N = \mathcal{U}\mathcal{A} \mathcal{U}^{-1} \).
+\end{ksvlem}
+\begin{proof}
+    Собственному значению \( 0 \) соответствует \( N-1 \) независимый собственный вектор
+        \( f_1 = {\left(1,-1,0,\ldots,0\right)}, \ldots,
+           f_{N-1} = {\left(0,\ldots,0,1,-1\right)} \),
+    а~собственному значению \( N \) матрицы \( \mathcal{J}_N \) 
+    соответствует собственный вектор \( f_N = {\left(1,\ldots,1\right)} \).
+    Применив ортогонализацию Грамма-Шмидта, получим ортонормальную систему \( h_1, \ldots, h_N \):
+    \[
+        h_k = \frac{1}{\sqrt{k(k+1)}}
+        \left(\smash{\underbrace{1,~\ldots,~1,}_{k \text{\ раз}}}~-k,~0,~\ldots,~0\right)
+        \in \mathbb{R}^N, \quad k={1, \ldots, N-1} \]
+    \[
+        h_N = {\left(1,~\ldots,~1\right)} \in \mathbb{R}^N, \]
+    В~качестве матрицы \( \mathcal{U} \) выберем матрицу,
+    имеющую столбцами векторы \( h_N, h_1, \ldots, h_{N-1} \):
+    \[ \mathcal{U} =
+    \begin{pmatrix}
+        \frac{1}{\sqrt N} &  \frac{1}{\sqrt2} &  \frac{1}{\sqrt{6}} & \cdots & \frac{1}{\sqrt{(N-2)(N-1)}} & \frac{1}{\sqrt{N(N-1)}} \\
+        \frac{1}{\sqrt N} & -\frac{1}{\sqrt2} &  \frac{1}{\sqrt{6}} & \cdots & \frac{1}{\sqrt{(N-2)(N-1)}} & \frac{1}{\sqrt{N(N-1)}} \\
+        \frac{1}{\sqrt N} & 0                 & -\frac{2}{\sqrt{6}} & \cdots & \frac{1}{\sqrt{(N-2)(N-1)}} & \frac{1}{\sqrt{N(N-1)}} \\
+        \frac{1}{\sqrt N} & 0                 &  0                  & \cdots & \frac{1}{\sqrt{(N-2)(N-1)}} & \frac{1}{\sqrt{N(N-1)}} \\
+        \vdots            & \vdots            &  \vdots             & \ddots & \vdots                      & \vdots   \\
+        \frac{1}{\sqrt N} & 0                 &  0                  & \cdots & \frac{1}{\sqrt{(N-2)(N-1)}} & \frac{1}{\sqrt{N(N-1)}} \\
+        \frac{1}{\sqrt N} & 0                 &  0                  & \cdots & \frac{2-N}{\sqrt{(N-2)(N-1)}} & \frac{1}{\sqrt{N(N-1)}} \\
+        \frac{1}{\sqrt N} & 0                 &  0                  & \cdots & 0                  & \frac{1-N}{\sqrt{N(N-1)}}
+    \end{pmatrix}.\]
+\end{proof}
+
+Таким образом, исходная матрица смежностей \( A \) подобна матрице
+\( \mathcal{A}{-}\mathcal{B} \), где \( \mathcal{B}{=}\mathcal{U}^{-1} B \mathcal{U} \).
+Далее ортогональность матрицы \( U \) будет играть важную роль.

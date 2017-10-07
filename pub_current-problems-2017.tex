@@ -1,0 +1,34 @@
+\documentclass[12pt]{article} 
+
+\usepackage[cp1251]{inputenc} % следующие две строки используются для 
+\usepackage[english,russian]{babel} % руссификации AmSLaTeX 
+
+\textheight=240mm \textwidth=170mm 
+% The line above messes with low-level tex
+% and causes vertical and horizontal page overflows.
+% The `geometry` package seems to fix it.
+\usepackage[textheight=240mm,textwidth=170mm]{geometry}
+
+% ----
+% User-specific packages
+
+\input{requirements}
+
+% ----
+
+\begin{document} 
+\noindent {УДК 517.984.3 : 519.177}
+
+\begin{center}
+    \textbf{
+    Исследование матрицы смежностей
+    почти-полного орграфа
+    методом подобных операторов}\\[3mm]
+    \textbf{Сергей Козлуков}\\[2mm]
+    \emph{Воронежский Государственный Университет}
+\end{center}
+
+\input{body/root}
+\bibliography{current-problems-2017}{}
+\bibliographystyle{plain}
+\end{document}

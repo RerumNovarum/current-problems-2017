@@ -1,0 +1,49 @@
+Let \( \mathscr{A}_{MN} \) be a~\( N\times N \) matrix composed of
+\( N^2 - M \) unities and \( M \) zeroes.
+Considered as an adjacencies matrix \( \mathscr{A}_{MN} \)
+corresponds to a~complete digraph with loops on \( N \) vertices
+with some \( M \) out of \( N^2 \) edges removed.
+Some important properties of a~graph are determined by its spectrum.
+For example Wang et al.~\cite{wang2003epidemic,chakrabarti2008epidemic} proposed a~discrete-time model
+of viral propagation in a~network.
+In that model a virus will die out or linger on
+depending on whether the ratio of curing and infection rates
+is below or above the treshold value.
+As Wang et al.\ have shown that treshold value
+is the spectral radius of the adjacencies matrix of the network graph,
+i.e.\ the maximal absolute value of its eigenvalues.
+More comprehensive description of spectral graph theory
+and its application is given by Cv\`etkovic et al.~\cite{cvetkovic1980spectra}.
+
+This article analyzes spectral properties of such matrices.
+The matrix \( \mathscr{A}_{MN} \) can be represented in the form
+\( \mathscr{A}_{MN} = \mathcal{J}_N - \mathscr{B}_{MN} \),
+where \( \mathcal{J}_N \) is a~\( N\times N \) matrix
+whose all entries are ones
+and \( \mathcal{B}_{MN} \) has unities exactly at these \( M \)
+places where \( \mathscr{A}_{MN} \) has zeroes.
+The spectrum of \( \mathcal{J}_N \) can be easily computed:
+\( \mathcal{J}_N^2 = N \mathcal{J} \),
+so \( \lambda(\lambda - N) \) is the minimal
+annihilating polynomial of \( \mathcal{J}_N \)
+and hence the spectrum of \( \mathcal{J}_{N} \) is
+\( \sigma(\mathcal{J}_N) = \{ 0,N \} \).
+
+For small enough \( M \) the eigenvalues of \( \mathscr{A}_{MN} \)
+will be ``close'' to those of \( \mathcal{J}_N \).
+Then The Method of Similar Operators~\cite{baskakov-harmonic,baskakov1983} is used,
+which allows in the case of perturbation of some ideal object (whose properties are known)
+to find an element of the algebra under consideration similar to the disturbed one
+yet having ``simpler'' structure.
+Via this method the following theorem is proven:
+%\textbf{Theorem.}
+\begin{center}
+\it
+    Let \( M < \frac{N^2}{16} \),
+    then the spectrum of \( \mathscr{A}_{MN} \) can be represented as a~disjoint union
+    \( \sigma\left(\mathscr{A}_{MN}\right) = \sigma_1 \cup \sigma_2 \)
+    of a~singletone \( \sigma_1=\{\lambda_1\} \)
+    and the set \( \sigma_2 \), satisfying the following conditions:
+    \[ \sigma_1 \subset \left\{ \mu\in\mathbb{R}; \lvert \mu - N \rvert < 4\sqrt{M} \right\}, \]
+    \[ \sigma_2 \subset \left\{ \mu\in\mathbb{C}; \lvert \mu \rvert < 4\sqrt{M} \right\}. \]
+\end{center}
