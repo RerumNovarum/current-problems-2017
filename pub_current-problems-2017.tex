@@ -20,15 +20,25 @@
 \noindent {УДК 517.984.3 : 519.177}
 
 \begin{center}
-    \textbf{
-    Исследование матрицы смежностей
-    почти-полного орграфа
-    методом подобных операторов}\\[3mm]
+    \textbf{Исследование спектральных свойств матриц
+смежностей орграфов специального вида
+методом подобных операторов}\\[3mm]
     \textbf{Сергей Козлуков}\\[2mm]
-    \emph{Воронежский Государственный Университет}
+    \emph{Воронежский Государственный Университет}\\[2mm]
+
+\input{body/abstract}
 \end{center}
 
 \input{body/root}
-\bibliography{current-problems-2017}{}
-\bibliographystyle{plain}
+% Bibliography;
+% In a release
+% the %.bbl file must be supplied.
+% It'll be `\input`-ed directly,
+% thus bibtex dependency is avoided.
+\IfFileExists{current-problems-2017.bbl}{
+    \input{current-problems-2017.bbl}
+}{
+    \bibliography{current-problems-2017}{}
+    \bibliographystyle{plain}
+}
 \end{document}

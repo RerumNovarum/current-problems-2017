@@ -1,13 +1,14 @@
 NAME = current-problems-2017
 SOURCES = $(NAME).tex $(NAME).bib requirements.tex $(wildcard body/*.tex)
 DOCUMENTS = $(NAME).pdf authors.pdf
+PUB_SOURCES = $(addprefix pub/,$(SOURCES))
 
 ZIP_LOCAL_CONTENTS = $(DOCUMENTS) $(SOURCES)
 ZIP_PUB_CONTENTS = \
-    $(addprefix pub/,$(SOURCES)) \
-    $(addprefix pub/,$(DOCUMENTS))
+    $(PUB_SOURCES) \
+    $(addprefix pub/,$(DOCUMENTS)) \
+	pub/$(NAME).bbl
 ZIP_CONTENTS = $(ZIP_PUB_CONTENTS) $(DOCUMENTS) $(SOURCES) 
-PUB_SOURCES = $(addprefix pub/,$(SOURCES))
 
 # Local build commands
 LTEX = xelatex
@@ -19,6 +20,9 @@ OUTENC = cp1251
 
 all: $(NAME)_local.zip
 
-PUB_SOURCES += pub/$(NAME).bbl
+pub/$(NAME).bbl: $(PUB_SOURCES)
+	rm -f $@
+	cd pub ; $(PTEX) $(NAME).tex
+	cd pub ; $(PBIB) $(NAME)
 
 include Makefile.rules

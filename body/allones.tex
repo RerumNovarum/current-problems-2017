@@ -1,0 +1,32 @@
+Рассмотрим граф, заданный матрицей смежностей
+\[ A = \mathcal{J}_N - B =
+    \begin{pmatrix}1 & \cdots & 1\\ \vdots & \ddots & \vdots \\ 1 & \cdots & 1\end{pmatrix} - B, \]
+ где \( \mathcal{J}_N \)~--- матрица, составленная из \( N{\times}N \) единиц,
+ а~\( B \) имеет единицы в~точности на тех \( M \) местах,
+ где в~\( A \) стоят нули.
+
+Спектр \( \sigma\left( \mathcal{J}_N \right) \)
+ матрицы \( \mathcal{J}_N \) легко считается:
+ \( \mathcal{J}_N^2 = N \mathcal{J}_N, \) т.е.
+ \( \lambda(\lambda - N) \)~--- аннулирующий и, что легко проверить,
+ минимальный многочлен матрицы \( \mathcal{J}_N \), а~значит
+ \( \sigma\left( \mathcal{J}_N \right) = \left\{ 0,N \right\}. \)
+
+\marginpar{TODO}
+\begin{ksvthm}\label{kozlukovsv:thm:almost-all-ones}
+    Пусть \( M < \frac{N^2}{16} \),
+    тогда спектр матрицы \( A \) можно представить в~виде
+    объединения \( \sigma\left(A\right) = \sigma_1 \cup \sigma_2 \)
+    непересекающихся
+    одноэлементного множества \( \sigma_1=\{\lambda_1\} \)
+    и~множества \( \sigma_2 \), удовлетворяющих условиям:
+    \[ \sigma_1 \subset \left\{ \mu\in\mathbb{R}; \lvert \mu - N \rvert < 4\sqrt{M} \right\}, \]
+    \[ \sigma_2 \subset \left\{ \mu\in\mathbb{C}; \lvert \mu \rvert < 4\sqrt{M} \right\}. \]
+    Собственное значение \( \lambda_1 \) совпадает с спектральным радиусом
+    \( \operatorname{spr}(A) \),
+    и ему соответствует собственный вектор \( v_1 \)
+    удовлетворяющий условию
+    \[ \left\|v_1 - 
+    \begin{pmatrix} 1/\sqrt{N}\\ \vdots \\ 1/\sqrt{N}\end{pmatrix}\right\|_2
+        \leq 4\frac{\sqrt{M}}{N}. \]
+\end{ksvthm}
