@@ -1,1 +1,47 @@
-TODO.
+Пусть теперь \( A\in \mathbb{K}^{m\times m} \)
+Будем рассматривать матрицу
+\[
+    \mathbb{A} =
+    \begin{pmatrix}
+        A      & \cdots & A \\
+        \vdots & \ddots & \vdots \\
+        A      & \cdots & A
+    \end{pmatrix}
+    \in \mathbb{K}^{mn{\times}mn},
+    \]
+    составленную из \( n\times n \) блоков
+    и возмущённую матрицу
+\[
+    \mathbb{A} - \mathbb{B}.
+    \]
+
+\begin{ksvlem}
+    Пусть \( A \) --- обратимая самосопряжённая матрица,
+    \( \lambda_1, \ldots, \lambda_m \)
+    --- её собственные значения,
+    с соответствующими им собственными векторами
+    \( h_1, \ldots, h_m \),
+    \( \|h_k\|_2=1, \).
+
+    Тогда спектр матрицы \( \mathbb{A} \) есть
+    \[
+        \sigma(\mathbb{A}) = \{0\} \cup n\sigma(A)
+        = \{ 0 \} \cup \{ n\lambda;\ \lambda\in\sigma(A) \}.
+        \]
+    Ненулевым собственным значениям \( n\lambda_1, \ldots, n\lambda_m \)
+    матрицы \( \mathbb{A} \)
+    соответствуют блочные собственные векторы
+    \[
+        f_j = \frac{1}{\sqrt{n}}(h_k, \ldots, h_k)\in\mathbb{K}^{mn},
+        \ j{=}\overline{1,m},
+       \]
+    а ортобазис ядра образуют ортогональные образу
+    векторы
+    \[
+        f_{j,k} =
+        \frac{1}{\sqrt{k(k+1)}}
+        (\underbrace{e_j,\ldots,e_j}_{k\ \text{раз}}, -ke_j, 0, \ldots, 0)\in\mathbb{K}^{mn},
+        \ k{=}\overline{1,n-1},
+        \ j{=}\overline{1,m}.
+        \]
+\end{ksvlem}

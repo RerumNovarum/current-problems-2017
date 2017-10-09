@@ -1,32 +1,138 @@
 Рассмотрим граф, заданный матрицей смежностей
 \[ A = \mathcal{J}_N - B =
-    \begin{pmatrix}1 & \cdots & 1\\ \vdots & \ddots & \vdots \\ 1 & \cdots & 1\end{pmatrix} - B, \]
- где \( \mathcal{J}_N \)~--- матрица, составленная из \( N{\times}N \) единиц,
- а~\( B \) имеет единицы в~точности на тех \( M \) местах,
- где в~\( A \) стоят нули.
+   \begin{pmatrix}1 & \cdots & 1\\ \vdots & \ddots & \vdots \\ 1 & \cdots & 1\end{pmatrix} - B,
+   \]
+    где \( \mathcal{J}_N \)~--- матрица, составленная из \( N{\times}N \) единиц,
+    а~\( B \) имеет единицы в~точности на тех \( M \) местах,
+    где в~\( A \) стоят нули.
+Это граф, полученный из полного графа
+    удалением некоторых \( M \) направленных рёбер.
 
 Спектр \( \sigma\left( \mathcal{J}_N \right) \)
- матрицы \( \mathcal{J}_N \) легко считается:
- \( \mathcal{J}_N^2 = N \mathcal{J}_N, \) т.е.
- \( \lambda(\lambda - N) \)~--- аннулирующий и, что легко проверить,
- минимальный многочлен матрицы \( \mathcal{J}_N \), а~значит
- \( \sigma\left( \mathcal{J}_N \right) = \left\{ 0,N \right\}. \)
+    матрицы \( \mathcal{J}_N \) легко считается:
+    \( \mathcal{J}_N^2 = N \mathcal{J}_N, \) т.е.
+    \( \lambda(\lambda - N) \)~--- аннулирующий и, что легко проверить,
+    минимальный многочлен матрицы \( \mathcal{J}_N \), а~значит
+    \( \sigma\left( \mathcal{J}_N \right) = \left\{ 0,N \right\}. \)
+Ядро и образ этой матрицы ортогональны.
+Ненулевому собственному значению
+    отвечает собственный вектор
+    \[
+        h_N = \frac{1}{\sqrt{N}}(1,\ldots, 1)\in\mathbb{R}^N,
+        \]
+    а ортонормальный базис ядра \( \operatorname{Ker}(J_N) \)
+    составляют векторы
+    \[
+        h_k = \frac{1}{k(k+1)}
+        \big(\underbrace{1,\ldots, 1}_{k\ \text{раз}}, -k, 0, \ldots, 0\big)
+        \in\mathbb{R}^N,
+        \ k=\overline{1,N{-1}}.
+        \]
 
-\marginpar{TODO}
+Так, матрица \( J_N-B \) подобна (блочной) матрице
+    \[
+        \mathcal{A} - \mathcal{B}, \]
+    \[
+        \mathcal{A} = \left(\begin{array}{c|c}
+        N & \mathbf{0} \\ \hline
+        \mathbf{0} & \mathbf{0}
+        \end{array}\right),
+        \]
+    \[
+        \mathcal{B} = U^{-1}B U,
+        \]
+    где \( U=\operatorname{columns}(h_N, h_1, \ldots, h_{N-1}) \)
+    --- матрица, составленная из собственных векторов-столбцов матрицы \( J_N \).
+
+Построим допустимую тройку для матрицы \( \mathcal{A} \).
+Проектор \( J \) естественно задать формулой
+    \[
+        JX =
+        \left(\begin{array}{c|c}
+        x_{11} & \mathbf{0} \\ \hline
+        \mathbf{0} & X_{22}
+        \end{array}\right)
+        \]
+где
+    \[
+        X =
+        \left(\begin{array}{c|c}
+        x_{11} & X_{12} \\ \hline
+        X_{21} & X_{22}
+        \end{array}\right)\in\mathbb{K}^{n{\times}n}
+        \]
+        --- записанная в блочном виде матрица,
+        \( x_{11}\in\mathbb{R}^{1\times 1} \) --- число.
+При этом матрица \( \mathcal{A} - JX \),
+    \( X\in\mathbb{R}^{n{\times}n} \),
+    является блочно-диагональной,
+    и её спектр есть объединение спектров её диагональных блоков:
+    \[
+        \sigma(\mathcal{A} - JX)
+        = \{ N - x_{11} \} \cup \sigma(-X_{22}).
+        \]
+
+Теперь найдём соответствующий \( J \)
+    трансформатор \( \Gamma \).
+Пусть \( \Gamma X = \begin{pmatrix}
+    \Gamma_{11}(X) & \Gamma_{12}(X) \\
+    \Gamma_{21}(X) & \Gamma_{22}(X)
+\end{pmatrix} \).
+Тогда
+\[
+    \mathcal{A} \Gamma X - (\Gamma X)\mathcal{A} = 
+    N
+    \begin{pmatrix}
+        0 & \Gamma_{12}(X) \\
+        -\Gamma_{21}(X) & 0
+     \end{pmatrix},
+     \]
+Из этого и из \( J\Gamma X = 0 \) находим
+    \[
+        \Gamma X = \frac{1}{N} \begin{pmatrix} 0 & X_{12} \\ -X_{21} & 0 \end{pmatrix}.
+        \]
+При этом
+    \(
+        \|\Gamma\|_{\mathrm{op}} \leq \frac1N.
+        \)
+
+Рассматривая теперь в пространстве \( \mathbb{R}^{n{\times}n} \)
+    норму Фробениуса \( \|\cdot\|_{\mathrm{F}} \)
+    и учитывая неравенство \( \|X\|_{\mathrm{op}} \leq \|X\|_{\mathrm{F}} \),
+    получаем \( \|\mathcal{B}\|_{\mathrm{op}} =
+        \|B\|_{\mathrm{op}} \leq \|B\|_{\mathrm{F}} = \sqrt{M} \),
+    где \( M \) --- число единиц в матрице \( B \).
+
+Непосредственно следует
 \begin{ksvthm}\label{kozlukovsv:thm:almost-all-ones}
-    Пусть \( M < \frac{N^2}{16} \),
-    тогда спектр матрицы \( A \) можно представить в~виде
-    объединения \( \sigma\left(A\right) = \sigma_1 \cup \sigma_2 \)
-    непересекающихся
-    одноэлементного множества \( \sigma_1=\{\lambda_1\} \)
-    и~множества \( \sigma_2 \), удовлетворяющих условиям:
-    \[ \sigma_1 \subset \left\{ \mu\in\mathbb{R}; \lvert \mu - N \rvert < 4\sqrt{M} \right\}, \]
-    \[ \sigma_2 \subset \left\{ \mu\in\mathbb{C}; \lvert \mu \rvert < 4\sqrt{M} \right\}. \]
-    Собственное значение \( \lambda_1 \) совпадает с спектральным радиусом
-    \( \operatorname{spr}(A) \),
-    и ему соответствует собственный вектор \( v_1 \)
-    удовлетворяющий условию
-    \[ \left\|v_1 - 
-    \begin{pmatrix} 1/\sqrt{N}\\ \vdots \\ 1/\sqrt{N}\end{pmatrix}\right\|_2
-        \leq 4\frac{\sqrt{M}}{N}. \]
+    Пусть \( M < \frac{1}{16}N^2 \),
+        тогда спектр матрицы \( A = J_N - B \) можно представить в~виде
+        объединения \( \sigma\left(A\right) = \sigma_1 \cup \sigma_2 \)
+        непересекающихся
+        одноэлементного множества \( {\sigma_1 = \{ N{-}x_{11}^o \}} \)
+        и~множества \( \sigma_2=\sigma(-X_{22}^o) \), удовлетворяющих условиям:
+    \[
+        |x_{11}^o| \leq 4\sqrt{M},
+        \]
+    \[
+        \sup_{\lambda\in\sigma_2} |\lambda| \leq 4\sqrt{M}.
+        \]
+    Собственное значение \( N - x_{11}^o \) совпадает с спектральным радиусом
+        \( \operatorname{spr}(A) \),
+        и ему соответствует собственный вектор
+        \[
+            \hat{h}_N =
+            U(E+\Gamma X)\begin{pmatrix}1\\0\\ {\vdots}\\ 0\end{pmatrix} =
+            h_N -
+            \frac1N (
+                {X_{21}^o}^{(1)} h_1 + 
+                \cdots +
+                {X_{21}^o}^{(N-1)} h_{N-1}),
+            \]
+        где \( {X_{21}^o}^{(1)}, \ldots, {X_{21}^o}^{(N-1)} \)
+        --- координаты вектора \( X_{21}^o\in\mathbb{R}^{(N{-}1){\times}1} \).
+    При этом верна оценка
+    \[
+        \left\|\hat{h}_N - h_N \right\|_2 \leq 4\frac{\sqrt{M}}{N}.
+        \]
 \end{ksvthm}

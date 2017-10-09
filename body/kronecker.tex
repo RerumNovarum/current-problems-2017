@@ -1,0 +1,53 @@
+Прямое произведение (произведение Кронекера)
+    двух матриц
+    \( X{=}(x_{ij}){\in}\mathbb{K}^{m_1{\times}n_1},\ \)
+    \( Y{\in}\mathbb{K}^{m_2{\times}n_2} \).
+    \( X\otimes Y \)
+    определено как блочная матрица
+\[
+    X\otimes Y =
+    \begin{pmatrix}
+        x_{11} Y & \cdots & x_{1n_1} Y \\
+        \vdots   & \ddots & \vdots \\
+        x_{m_11} Y & \cdots & x_{m_1n_1} Y \\
+    \end{pmatrix}\in\mathbb{K}^{m_1m_1\times n_1n_2}.
+    \]
+
+Пусть \( A{=}(a_{ij}){\in}\mathbb{K}^{n\times n} \)
+и \( B\in\mathbb{K}^{m\times m} \).
+Будем исследовать спектральные свойства
+    матрицы
+    \[
+        A\otimes B = 
+        \begin{pmatrix}
+            a_{11} B & \cdots & a_{1n} B \\
+            \vdots   & \ddots & \vdots \\
+            a_{n1} B & \cdots & a_{nn} B \\
+        \end{pmatrix}\in\mathbb{K}^{mn\times mn}
+        \]
+    и возмущённой матрицы
+    \[
+        A\otimes B - \mathbb{F}.
+        \]
+
+\begin{ksvlem}
+    Пусть \( h\in\mathbb{K}^n \) --- собственный вектор матрицы \( A \),
+    отвечающий собственному значению \( \lambda \),
+    а \( f\in\mathbb{K}^m \) --- собственный вектор,
+    соответствующий собственному значению \( \mu \):
+    \[
+        A h = \lambda h,
+        \]
+    \[
+        B f = \mu f.
+        \]
+    Тогда \( h\otimes f \in \mathbb{K}^{mn} \)
+    --- собственный вектор матрицы \( A\otimes B \),
+    отвечающий собственному значению \( \lambda\mu \):
+    \[
+        (A\otimes B)(h\otimes f) = \lambda\mu\ h\otimes f.
+        \]
+\end{ksvlem}
+\begin{proof}
+    Для доказательства достаточно расписать выражение по координатам.
+\end{proof}
