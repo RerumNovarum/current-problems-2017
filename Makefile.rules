@@ -125,7 +125,7 @@ pub/$(NAME).toc: $(addprefix pub/,$(SOURCES)) pub
 	pandoc $< -o $@
 
 %.pdf: %.md
-	pandoc --latex-engine=xelatex -V mainfont='Anonymous Pro' -V mathfont='XITS' $< -o $@
+	pandoc --latex-engine=xelatex -V mainfont='Anonymous Pro' -V mathfont='CMU Serif' $< -o $@
 
 # Printing helpers
 $(NAME)-updown.pdf: $(NAME).pdf
