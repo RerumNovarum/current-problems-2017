@@ -18,7 +18,9 @@ PTEX = pdflatex
 PBIB = bibtex
 OUTENC = cp1251
 
-all: $(NAME)_local.zip
+default: $(NAME)_local.zip
+
+all: $(NAME).zip $(NAME)_pub.zip $(NAME)_local.zip
 
 pub/$(NAME).bbl: $(PUB_SOURCES)
 	rm -f $@
