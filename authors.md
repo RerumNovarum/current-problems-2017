@@ -4,6 +4,8 @@
 
 Студент;
 
+Научный руководитель: А.Г. Баскаков;
+
 Кафедра "Нелинейной Динамики" факультета "Прикладной Математики и Информатики"
 Воронежского Государственного Университета;
 
@@ -18,6 +20,8 @@ ithesaboteur@yandex.com
 Kozlukov Sergey Viktorovitch;
 
 Student;
+
+Scientific advisor: Anatoly Baskakov;
 
 Department of Nonlinear Oscillations
 on the faculty of Applied Mathematics and Informatics,
