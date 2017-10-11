@@ -26,9 +26,9 @@
         \end{pmatrix}\in\mathbb{K}^{mn\times mn}
         \]
     и возмущённой матрицы
-    \[
+    \begin{equation}\label{ksv:disturbkron}
         A\otimes B - \mathbb{F}.
-        \]
+    \end{equation}
 
 \begin{ksvlem}
     Пусть \( h\in\mathbb{K}^n \) --- собственный вектор матрицы \( A \),
@@ -51,3 +51,24 @@
 \begin{proof}
     Для доказательства достаточно расписать выражение по координатам.
 \end{proof}
+
+Заметим, что рассмотренная в предыдущем разделе
+    блочная матрица
+\(
+    \begin{pmatrix}
+        B      & \cdots & B \\
+        \vdots & \ddots & \vdots \\
+        B      & \cdots & B
+    \end{pmatrix}
+        \)
+    представляет собой частный случай \eqref{ksv:disturbkron}:
+\[
+    \begin{pmatrix}
+        B      & \cdots & B \\
+        \vdots & \ddots & \vdots \\
+        B      & \cdots & B
+    \end{pmatrix} =
+    J_n \otimes B,
+        \]
+    где \( J_n \) --- матрица единиц,
+    исследованная в первом примере.
