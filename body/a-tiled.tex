@@ -16,12 +16,15 @@
     \]
 
 \begin{ksvlem}
-    Пусть \( A \) --- обратимая самосопряжённая матрица,
+    Пусть \( A \) --- обратимая самосопряжённая матрица.
+    В этом случае она имеет \( m \) ортонормальных
+    собственных векторов \( h_1, \ldots, h_m \)
+    (\( \|h_k\|_2=1,\ k{=}\overline{1,m} \)),
+    которым отвечают собственные значения\( \lambda_1, \ldots, \lambda_m \).
     \( \lambda_1, \ldots, \lambda_m \)
     --- её собственные значения,
     с соответствующими им собственными векторами
     \( h_1, \ldots, h_m \),
-    \( \|h_k\|_2=1, \).
 
     Тогда спектр матрицы \( \mathbb{A} \) есть
     \[
@@ -44,4 +47,192 @@
         \ k{=}\overline{1,n-1},
         \ j{=}\overline{1,m}.
         \]
+    Другими словами, матрица
+    \[
+        \mathbb{A} = 
+        \begin{pmatrix}
+            A      & \cdots & A \\
+            \vdots & \ddots & \vdots \\
+            A      & \cdots & A
+        \end{pmatrix}
+        \in\mathbb{K}^{mn{\times}mn}
+        \]
+    подобна блочно-диагональной матрице
+    \[
+        \mathcal{A} =
+        \left(\begin{array}{c|c}
+            \operatorname{diag}(n\lambda_1,\ldots,n\lambda_m) & 0 \\ \hline
+            0 & \mathbf{0}
+        \end{array}\right),
+        \]
+    с ортогональной матрицей преобразования подобия
+    \[
+        U = \operatorname{columns}
+        \left(f_1, \ldots, f_m, f_{1,1}, \ldots, f_{1,n{-1}}, \ldots, f_{m,n{-}1}\right).
+        \]
 \end{ksvlem}
+
+Перейдём к изучению возмущённой матрицы.
+\marginpar{Гораздо удобнее рассматривать спектральные разложения операторов
+--- работать с проекторами}
+Матрицы будем рассматривать в блочном виде:
+\[
+    X =
+        \left(\begin{array}{c|c}
+            \begin{matrix}
+                x_{11} & \cdots & x_{1m} \\
+                \vdots & \ddots & \vdots \\
+                x_{m1} & \cdots & x_{mm}
+            \end{matrix} &
+            \begin{matrix}
+                x_{1,m+1} \\
+                \vdots \\
+                x_{m,m+1}
+            \end{matrix} \\ \hline
+            \begin{matrix}
+                x_{m+1,1} &
+                \cdots &
+                x_{m+1,m}
+            \end{matrix} &
+            X_{m+1,m+1}
+        \end{array}\right),
+    \]
+где
+\( X_{ij}      {=} x_{ij}      {\in} \mathbb{K} \),
+\( X_{m{+}1,j} {=} x_{m{+}1,j} {\in} \mathbb{K} \),
+\( X_{i,m{+}1} {=} x_{i,m{+}1} {\in} \mathbb{K} \)
+для \( 1\leq i,j \leq m \),
+а в нижнем правом углу расположен блок
+\( X_{m{+}1,m{+}1} {\in} \mathbb{K}^{m(n{-}1){\times}m(n-1)} \).
+Как и прежде, в качестве \( J \)
+возьмём оператор блочной диагонализации:
+\[
+    X =
+        \left(\begin{array}{c|c}
+            \begin{matrix}
+                x_{11} &  & 0 \\
+                 & \ddots &  \\
+                0 &  & x_{mm}
+            \end{matrix} &
+            \begin{matrix}
+                0 \\
+                \vdots \\
+                0
+            \end{matrix} \\ \hline
+            \begin{matrix}
+                0 & \cdots & 0
+            \end{matrix} &
+            X_{m+1,m+1}
+        \end{array}\right),
+    \]
+\begin{ksvlem}
+    Пусть все числа \( \lambda_1, \ldots, \lambda_m \) различны.
+    Тогда тройка \( (\mathbb{K}^{m{\times}n}, J, \Gamma) \)
+    с трансформатором \( \Gamma \), действующим по формуле
+    \[
+        \Gamma X =
+        \left(\begin{array}{c|c}
+            \begin{matrix}
+                0               & \gamma_{12}(X) & \cdots & \gamma_{1m}(X) \\
+                \gamma_{21}(X)  & 0              & \cdots & \gamma_{2m}(X) \\
+                \vdots          & \vdots         & \ddots & \vdots & \ \\
+                \gamma_{m1}(X)  & \gamma_{m2}(X) & \cdots & 0
+            \end{matrix} &
+            \begin{matrix}
+                \gamma_{1,m+1}(X) \\
+                \gamma_{2,m+1}(X) \\
+                \vdots \\
+                \gamma_{m,m+1}(X)
+            \end{matrix} \\ \hline
+            \begin{matrix}
+                \gamma_{m{+}1,1}(X) &
+                \gamma_{m{+}1,2}(X) &
+                \cdots &
+                \gamma_{m{+}1,m}(X)
+            \end{matrix} &
+            \mathbf{0}
+        \end{array}\right),
+        \]
+    \[
+        \gamma_{ij}(X) =
+        \left\{\begin{aligned}
+            & \frac1N \frac{1}{\lambda_i - \lambda_j} x_{ij},
+              \ 1\leq i{\neq}j \leq m{+}1, \\
+            & 0,
+              \ 1\leq i{=}j \leq m{+}1,
+        \end{aligned}\right.
+        \]
+    \[
+        \lambda_{m+1} \coloneqq 0,
+        \]
+    является допустимой.
+    При этом
+    \[
+        \|\Gamma\|_{\mathrm{op}} =
+        \frac1N
+        \frac{1}{\min_{1\leq i{\neq}j \leq m{+}1}|\lambda_i - \lambda_j|} =
+        \]
+    \[
+        = \frac1N
+         \max\left\{
+         \frac{1}{
+             \min\limits_{1\leq i{\neq}j \leq m }{|\lambda_i - \lambda_j|}},
+         \frac{1}{
+             \min\limits_{1\leq j \leq m}{|\lambda_j|}}
+         \right\}
+        \]
+\end{ksvlem}
+
+\begin{ksvthm}
+    Пусть
+    \[
+        \left\| \mathbb{B} \right\|_{\mathrm{op}}
+        \leq 
+        \frac{N}{4}
+         \min\left\{
+             \min\limits_{1\leq i{\neq}j \leq m }{|\lambda_i - \lambda_j|},
+             \min\limits_{1\leq j \leq m}{|\lambda_j|}
+         \right\}.
+        \]
+    Тогда исследуемая возмущённая матрица
+    \[
+        \mathbb{A} - \mathbb{B}
+        \]
+    имеет спектр
+    \[
+        \sigma\left(\mathbb{A}\right) =
+        \left\{
+            n\lambda_1 - x_{11}^o, \ldots, n\lambda_m - x_{mm}^o, 0
+        \right\}
+        \]
+    и собственные векторы
+    \[
+        \hat{f}_j = f_j + \xi_j,
+        ,\ j{=}\overline{1,m}
+        \]
+    \[
+        \hat{f}_{j,k} = f_{j,k} + \xi_{j,k},
+        \ j{=}\overline{1,m},
+        \ k{=}\overline{1,N{-}1},
+        \]
+    где
+    \[
+        x_{jj}{\in}\mathbb{C},
+        \ \xi_j, \xi_{j,k}{\in}\mathbb{K}^{mn},
+        \]
+    \[
+        |x_{jj}|,\ \|\xi_j\|_2, \|\xi_{j,k}\|_2 \leq
+        4 \|\mathbb{B}\|_{\mathrm{op}} 
+          \frac1N
+          \max\left\{
+          \frac{1}{
+              \min\limits_{1\leq i{\neq}j \leq m }{|\lambda_i - \lambda_j|}},
+          \frac{1}{
+              \min\limits_{1\leq j \leq m}{|\lambda_j|}}
+          \right\},
+        \]
+    \[
+        j{=}\overline{1,m},
+        \ k{=}\overline{1,N{-}1}.
+        \]
+\end{ksvthm}
