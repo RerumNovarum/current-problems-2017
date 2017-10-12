@@ -1,0 +1,733 @@
+\documentclass[12pt]{article}
+
+\usepackage[cp1251]{inputenc} % следующие две строки используются для
+\usepackage[english,russian]{babel} % руссификации AmSLaTeX
+
+\textheight=240mm \textwidth=170mm
+% The line above messes with low-level tex
+% and causes vertical and horizontal page overflows.
+% The `geometry` package seems to fix it.
+\usepackage[textheight=240mm,textwidth=170mm]{geometry}
+
+% ----
+% User-specific packages
+
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsmath}
+% \usepackage{marginnote}
+\usepackage{amsthm}
+\newtheorem*{ksvthm*}{Теорема}
+\newtheorem{ksvthm}{Теорема}
+\newtheorem{ksvlem}[ksvthm]{Лемма}
+\newtheorem{ksvcrl}[ksvthm]{Следствие}
+\theoremstyle{definition}
+\newtheorem{ksvdfn}{Определение}
+
+% ----
+
+\begin{document}
+\noindent {УДК 517.984.3 : 519.177}
+
+\begin{center}
+    \textbf{Исследование спектральных свойств матриц
+смежностей орграфов специального вида
+методом подобных операторов}\\[3mm]
+    \textbf{Сергей Козлуков}\\[2mm]
+    \emph{Воронежский Государственный Университет}\\[2mm]
+\end{center}
+
+\subsection*{Аннотация}
+Для исследования спектральных свойств матриц специального вида,
+в том числе матриц смежностей некоторых графов,
+используется Метод Подобных Операторов~\texttt{[1, 2]},
+развиваемый А.~Г.~Баскаковым.
+
+\subsection*{Спектральные свойства матриц смежностей}
+Матрицей смежностей ориентированного графа на \( N \) вершинах
+    называется матрица \( A=(a_{ij}), \)
+    размера \( N\times N \),
+    в которой \( a_{ij} \) --- количество рёбер
+    из \( i \)-й вершины в \( j \)-ую.
+Марковский процесс случайного блуждания по графу
+    приводит к мере центральности
+    узлов сети~\texttt{[3]}
+    (доминирующий собственный вектор матрицы смежностей,
+     являющийся также стационарным распределением
+     рассматриваемого процесса,
+     описывает долю времени, проводимую агентом в каждом узле).
+Изначально использовавшийся в \texttt{Google}
+    алгоритм \texttt{PageRank}~\texttt{[4]}
+    вычисления этой меры опирается на степенной метод,
+    поэтому его скорость сходимости
+    определяется отношением абсолютных величин
+    первых двух (упорядоченных по убыванию)
+    собственных значений матрицы перехода.
+Устойчивость стационарного распределения
+    определяется \emph{спектральным зазором}
+    --- разностью между модулями первых двух
+    собственных значений матрицы перехода~\texttt{[5]}.
+В~\texttt{[6]} описан способ
+    аппроксимации почти-инвариантных множеств,
+    также опирающийся на спектральное разложение.
+В~\texttt{[7, 8]}
+    для модели Susceptible-Infective-Susceptible
+    распространения вируса в~сети
+    показано, что эффективная скорость
+    распространения вируса есть произведение
+    спектрального радиуса матрицы смежностей
+    и отношения интенсивностей передачи инфекции и исцеления,
+    и что в зависимости от положения этой величины относительно единицы
+    случится либо эпидемия, либо оздоровление почти всей сети.
+
+Подробно спектральная теория графов и~е\"е приложения
+    изложены в~монографии~\texttt{[9]}.
+\subsection*{Метод подобных операторов}
+Приведём в упрощённом виде, учитывающем конечномерность задачи,
+    необходимые далее нотацию и утверждения
+    метода подобных операторов~\texttt{[1, 2]},
+    развиваемого А.~Г.~Баскаковым.
+
+
+Пространство \( \mathbb{K}^n \)
+    будем считать евклидовым с скалярным произведением
+    \[
+        (x, y){=}\sum_k x_k\overline{y_k},
+        \ x{=}(x_1,\ldots, x_n),
+        \ y=(y_1,\ldots, y_n)
+        \in \mathbb{K}^n
+        \]
+    и нормой
+    \(
+        \|x\|_2^2{=}(x,x).
+        \)
+Символом \( \mathbb{K}^{m\times n} \)
+    будем обозначать линейное пространство
+    матриц размера \( m{\times}n \)
+    с элементами в поле \( \mathbb{K}\in\{\mathbb{R},\mathbb{C}\} \).
+Если \( V \) --- банахово пространство с нормой \( \|\cdot\| \),
+    то символом \( L(V) \)
+    будем обозначать банахову алгебру
+    ограниченных линейных операторов \( V\to V \)
+    с операторной нормой
+\[
+    \|A\|_{\mathrm{op}} = \sup_{\substack{\|x\|=1,\\ x\in V}} \|A x\|,\ A\in L(V).
+    \]
+Наряду с \( L(\mathbb{K}^n) \)
+    будем рассматривать изоморфную ему
+    банахову алгебру \( \mathbb{K}^{n\times n} \),
+    с одной из следующих норм:
+    \( \|A\|_{\mathrm{op}} = \sup_{\substack{\|x\|=1,\\ x\in V}} \|A x\|,\ \)
+    \( \|A\|_{\mathrm{F}} = \sqrt{\sum_{i,j} |a_{ij}|^2},\ \)
+    для матриц \( A{=}(a_{ij})\in\mathbb{K}^{n\times n} \).
+Элементы пространства
+    \( L(L(V)) \)
+    линейных преобразований операторов на \( V \),
+    и изоморфного ему пространства \( L(\mathbb{K}^{n\times n}) \),
+    будем называть \emph{трансформаторами}
+    (терминология М.~Г.~Крейна).
+
+Спектр (множество собственных значений)
+    матрицы \( A\in\mathbb{K}^{n\times n} \)
+    будем обозначать \( \sigma(A) \).
+
+Матрицы \( A_1, A_2 \in \mathbb{K}^{n\times n} \)
+    называют \emph{подобными}, если существует
+    обратимая матрица \( U\in\mathbb{K}^{n\times n} \),
+    такая что \( A_1 U = U A_2 \).
+Подобные матрицы обладают рядом совпадающих спектральных свойств:
+    они имеют одинаковый спектр (\( \sigma(A_1)=\sigma(A_2) \)),
+    а собственные векторы \( A_2 \) переходят
+    в собственные векторы \( A_1 \) под действием
+    преобразования подобия \( U \)
+    (т.е. \( A_2 x = \lambda x \implies A_1 U x = \lambda U x \)).
+
+Кортеж \( (\mathbb{K}^{n{\times}n}, J, \Gamma) \),
+    будем называть \emph{допустимой тройкой}
+    для матрицы \( A\in\mathbb{K}^{n\times n} \),
+    если выполняются следующие условия:
+\begin{enumerate}
+\item
+    \( J,\Gamma\in L(\mathbb{K}^{n{\times}n}) \),
+    причём \( J \) --- проектор.
+\item
+    \( \Gamma \) на каждой матрице \( X\in \mathbb{K}^{n\times n} \)
+    определяется уравнениями
+    \[ A\Gamma X - (\Gamma X) A = X - JX, \]
+    \[ J\Gamma X = 0. \]
+\end{enumerate}
+
+\begin{ksvthm*}{О подобии (в~общей постановке см.~\texttt{[1, 2]})}
+    Рассмотрим матрицы \( A-B \),
+        где \( A,B\in \mathbb{K}^{n{\times}n} \).
+    Пусть \( (\mathbb{K}^{n\times n}, J, \Gamma) \)
+        --- допустимая тройка для матрицы \( A\in\mathbb{K}^{n{\times}n} \)
+        и пусть
+    \[
+        \|B\|_{\mathrm{op}} \|\Gamma\|_{\mathrm{op}} \leq \frac14.
+        \]
+    Тогда матрица \( A-B \)
+        подобна некоторой матрице \( A-X^o, \)
+        где \( X^o\in\mathbb{K}^{n{\times}n} \)
+        --- решение нелинейного уравнения
+    \[
+        X = B\Gamma X - (\Gamma X)J(B + B\Gamma X) + B \equiv \Phi(X),
+        \]
+        которое можно найти методом простых итераций,
+        как предел сходящейся последовательности
+        \( X^{(k)} = \Phi^{k}(X) = \Phi(\Phi(\cdots\Phi(X)\cdots)) \).
+    Преобразование подобие матрицы \( A-B \)
+        в матрицу \( A-JX^o \) осуществляется
+        матрицей \( E+\Gamma X^o \),
+        где \( E\in\mathbb{K}^{n{\times}n} \) --- тождественная матрица.
+    Это решение удовлетворяет следующим ограничениям:
+    \[ \|X^o - B\|_{\mathrm{op}} \leq 3\|B\|_{\mathrm{op}}, \]
+    \[ \operatorname{spr}(X^o) \leq \|X^o\|_{\mathrm{op}} \leq 4\|B\|_{\mathrm{op}}. \]
+\end{ksvthm*}
+\subsection*{Пример 1. Матрица смежностей, почти-полного орграфа}
+Рассмотрим граф, заданный матрицей смежностей
+\[ A = \mathcal{J}_N - B =
+   \begin{pmatrix}1 & \cdots & 1\\ \vdots & \ddots & \vdots \\ 1 & \cdots & 1\end{pmatrix} - B,
+   \]
+    где \( \mathcal{J}_N \)~--- матрица, составленная из \( N{\times}N \) единиц,
+    а~\( B \) имеет единицы в~точности на тех \( M \) местах,
+    где в~\( A \) стоят нули.
+Это граф, полученный из полного графа
+    удалением некоторых \( M \) направленных рёбер.
+
+Спектр \( \sigma\left( \mathcal{J}_N \right) \)
+    матрицы \( \mathcal{J}_N \) легко считается:
+    \( \mathcal{J}_N^2 = N \mathcal{J}_N, \) т.е.
+    \( \lambda(\lambda - N) \)~--- аннулирующий и, что легко проверить,
+    минимальный многочлен матрицы \( \mathcal{J}_N \), а~значит
+    \( \sigma\left( \mathcal{J}_N \right) = \left\{ 0,N \right\}. \)
+Ядро и образ этой матрицы ортогональны.
+Ненулевому собственному значению
+    отвечает собственный вектор
+    \[
+        h_N = \frac{1}{\sqrt{N}}(1,\ldots, 1)\in\mathbb{R}^N,
+        \]
+    а ортонормальный базис ядра \( \operatorname{Ker}(J_N) \)
+    составляют векторы
+    \[
+        h_k = \frac{1}{k(k+1)}
+        \big(\underbrace{1,\ldots, 1}_{k\ \text{раз}}, -k, 0, \ldots, 0\big)
+        \in\mathbb{R}^N,
+        \ k=\overline{1,N{-1}}.
+        \]
+
+Так, матрица \( J_N-B \) подобна (блочной) матрице
+    \[
+        \mathcal{A} - \mathcal{B}, \]
+    \[
+        \mathcal{A} = \left(\begin{array}{c|c}
+        N & \mathbf{0} \\ \hline
+        \mathbf{0} & \mathbf{0}
+        \end{array}\right),
+        \]
+    \[
+        \mathcal{B} = U^{-1}B U,
+        \]
+    где \( U=\operatorname{columns}(h_N, h_1, \ldots, h_{N-1}) \)
+    --- матрица, составленная из собственных векторов-столбцов матрицы \( J_N \).
+
+Построим допустимую тройку для матрицы \( \mathcal{A} \).
+Проектор \( J \) естественно задать формулой
+    \[
+        JX =
+        \left(\begin{array}{c|c}
+        x_{11} & \mathbf{0} \\ \hline
+        \mathbf{0} & X_{22}
+        \end{array}\right)
+        \]
+где
+    \[
+        X =
+        \left(\begin{array}{c|c}
+        x_{11} & X_{12} \\ \hline
+        X_{21} & X_{22}
+        \end{array}\right)\in\mathbb{K}^{n{\times}n}
+        \]
+        --- записанная в блочном виде матрица,
+        \( x_{11}\in\mathbb{R}^{1\times 1} \) --- число.
+При этом матрица \( \mathcal{A} - JX \),
+    \( X\in\mathbb{R}^{n{\times}n} \),
+    является блочно-диагональной,
+    и её спектр есть объединение спектров её диагональных блоков:
+    \[
+        \sigma(\mathcal{A} - JX)
+        = \{ N - x_{11} \} \cup \sigma(-X_{22}).
+        \]
+
+Теперь найдём соответствующий \( J \)
+    трансформатор \( \Gamma \).
+Пусть \( \Gamma X = \begin{pmatrix}
+    \Gamma_{11}(X) & \Gamma_{12}(X) \\
+    \Gamma_{21}(X) & \Gamma_{22}(X)
+\end{pmatrix} \).
+Тогда
+\[
+    \mathcal{A} \Gamma X - (\Gamma X)\mathcal{A} =
+    N
+    \begin{pmatrix}
+        0 & \Gamma_{12}(X) \\
+        -\Gamma_{21}(X) & 0
+     \end{pmatrix},
+     \]
+Из этого и из \( J\Gamma X = 0 \) находим
+    \[
+        \Gamma X = \frac{1}{N} \begin{pmatrix} 0 & X_{12} \\ -X_{21} & 0 \end{pmatrix}.
+        \]
+При этом
+    \(
+        \|\Gamma\|_{\mathrm{op}} \leq \frac1N.
+        \)
+
+Рассматривая теперь в пространстве \( \mathbb{R}^{n{\times}n} \)
+    норму Фробениуса \( \|\cdot\|_{\mathrm{F}} \)
+    и учитывая неравенство \( \|X\|_{\mathrm{op}} \leq \|X\|_{\mathrm{F}} \),
+    получаем \( \|\mathcal{B}\|_{\mathrm{op}} =
+        \|B\|_{\mathrm{op}} \leq \|B\|_{\mathrm{F}} = \sqrt{M} \),
+    где \( M \) --- число единиц в матрице \( B \).
+
+Непосредственно следует
+\begin{ksvthm}\label{kozlukovsv:thm:almost-all-ones}
+    Пусть \( M < \frac{1}{16}N^2 \),
+        тогда спектр матрицы \( A = J_N{-}B \) можно представить в~виде
+        объединения \( \sigma\left(A\right) = \sigma_1 \cup \sigma_2 \)
+        непересекающихся
+        одноэлементного множества \( {\sigma_1 = \left\{ N{-}x_{11}^o \right\}} \)
+        и~множества \( \sigma_2=\sigma(-X_{22}^o) \), удовлетворяющих условиям:
+    \[
+        |x_{11}^o| \leq 4\sqrt{M},
+        \]
+    \[
+        \sup_{\lambda\in\sigma_2} |\lambda| \leq 4\sqrt{M}.
+        \]
+    Собственное значение \( N - x_{11}^o \) совпадает с спектральным радиусом
+        \( \operatorname{spr}(A) \),
+        и ему соответствует собственный вектор
+        \[
+            \hat{h}_N =
+            U(E+\Gamma X)\begin{pmatrix}1\\0\\ {\vdots}\\ 0\end{pmatrix} =
+            h_N -
+            \frac1N (
+                {X_{21}^o}^{(1)} h_1 +
+                \cdots +
+                {X_{21}^o}^{(N-1)} h_{N-1}),
+            \]
+        где \( {X_{21}^o}^{(1)}, \ldots, {X_{21}^o}^{(N-1)} \)
+        --- координаты вектора \( X_{21}^o\in\mathbb{R}^{(N{-}1){\times}1} \).
+    При этом верна оценка
+    \[
+        \left\|\hat{h}_N - h_N \right\|_2 \leq 4\frac{\sqrt{M}}{N}.
+        \]
+\end{ksvthm}
+\subsection*{Пример 2. Матрица, составленная из однородных блоков}
+Пусть теперь \( A\in \mathbb{K}^{m\times m} \)
+Будем рассматривать матрицу
+\[
+    \mathbb{A} =
+    \begin{pmatrix}
+        A      & \cdots & A \\
+        \vdots & \ddots & \vdots \\
+        A      & \cdots & A
+    \end{pmatrix}
+    \in \mathbb{K}^{mn{\times}mn},
+    \]
+    составленную из \( n\times n \) блоков
+    и возмущённую матрицу
+\[
+    \mathbb{A} - \mathbb{B}.
+    \]
+
+\begin{ksvlem}
+    Пусть \( A \) --- обратимая самосопряжённая матрица.
+    В этом случае она имеет \( m \) ортонормальных
+    собственных векторов \( h_1, \ldots, h_m \)
+    (\( \|h_k\|_2=1,\ k{=}\overline{1,m} \)),
+    которым отвечают собственные значения\( \lambda_1, \ldots, \lambda_m \).
+    \( \lambda_1, \ldots, \lambda_m \)
+    --- её собственные значения,
+    с соответствующими им собственными векторами
+    \( h_1, \ldots, h_m \),
+
+    Тогда спектр матрицы \( \mathbb{A} \) есть
+    \[
+        \sigma(\mathbb{A}) = \{0\} \cup n\sigma(A)
+        = \{ 0 \} \cup \{ n\lambda;\ \lambda\in\sigma(A) \}.
+        \]
+    Ненулевым собственным значениям \( n\lambda_1, \ldots, n\lambda_m \)
+    матрицы \( \mathbb{A} \)
+    соответствуют блочные собственные векторы
+    \[
+        f_j = \frac{1}{\sqrt{n}}(h_k, \ldots, h_k)\in\mathbb{K}^{mn},
+        \ j{=}\overline{1,m},
+       \]
+    а ортобазис ядра образуют ортогональные образу
+    векторы
+    \[
+        f_{j,k} =
+        \frac{1}{\sqrt{k(k+1)}}
+        (\underbrace{e_j,\ldots,e_j}_{k\ \text{раз}}, -ke_j, 0, \ldots, 0)\in\mathbb{K}^{mn},
+        \ k{=}\overline{1,n-1},
+        \ j{=}\overline{1,m}.
+        \]
+    Другими словами, матрица
+    \[
+        \mathbb{A} =
+        \begin{pmatrix}
+            A      & \cdots & A \\
+            \vdots & \ddots & \vdots \\
+            A      & \cdots & A
+        \end{pmatrix}
+        \in\mathbb{K}^{mn{\times}mn}
+        \]
+    подобна блочно-диагональной матрице
+    \[
+        \mathcal{A} =
+        \left(\begin{array}{c|c}
+            \operatorname{diag}(n\lambda_1,\ldots,n\lambda_m) & 0 \\ \hline
+            0 & \mathbf{0}
+        \end{array}\right),
+        \]
+    с ортогональной матрицей преобразования подобия
+    \[
+        U = \operatorname{columns}
+        \left(f_1, \ldots, f_m, f_{1,1}, \ldots, f_{1,n{-1}}, \ldots, f_{m,n{-}1}\right).
+        \]
+\end{ksvlem}
+
+Перейдём к изучению возмущённой матрицы.
+Матрицы будем рассматривать в блочном виде:
+\[
+    X =
+        \left(\begin{array}{c|c}
+            \begin{matrix}
+                x_{11} & \cdots & x_{1m} \\
+                \vdots & \ddots & \vdots \\
+                x_{m1} & \cdots & x_{mm}
+            \end{matrix} &
+            \begin{matrix}
+                x_{1,m+1} \\
+                \vdots \\
+                x_{m,m+1}
+            \end{matrix} \\ \hline
+            \begin{matrix}
+                x_{m+1,1} &
+                \cdots &
+                x_{m+1,m}
+            \end{matrix} &
+            X_{m+1,m+1}
+        \end{array}\right),
+    \]
+где
+\( X_{ij}      {=} x_{ij}      {\in} \mathbb{K} \),
+\( X_{m{+}1,j} {=} x_{m{+}1,j} {\in} \mathbb{K} \),
+\( X_{i,m{+}1} {=} x_{i,m{+}1} {\in} \mathbb{K} \)
+для \( 1\leq i,j \leq m \),
+а в нижнем правом углу расположен блок
+\( X_{m{+}1,m{+}1} {\in} \mathbb{K}^{m(n{-}1){\times}m(n-1)} \).
+Как и прежде, в качестве \( J \)
+возьмём оператор блочной диагонализации:
+\[
+    X =
+        \left(\begin{array}{c|c}
+            \begin{matrix}
+                x_{11} &  & 0 \\
+                 & \ddots &  \\
+                0 &  & x_{mm}
+            \end{matrix} &
+            \begin{matrix}
+                0 \\
+                \vdots \\
+                0
+            \end{matrix} \\ \hline
+            \begin{matrix}
+                0 & \cdots & 0
+            \end{matrix} &
+            X_{m+1,m+1}
+        \end{array}\right),
+    \]
+\begin{ksvlem}
+    Пусть все числа \( \lambda_1, \ldots, \lambda_m \) различны.
+    Тогда тройка \( (\mathbb{K}^{m{\times}n}, J, \Gamma) \)
+    с трансформатором \( \Gamma \), действующим по формуле
+    \[
+        \Gamma X =
+        \left(\begin{array}{c|c}
+            \begin{matrix}
+                0               & \gamma_{12}(X) & \cdots & \gamma_{1m}(X) \\
+                \gamma_{21}(X)  & 0              & \cdots & \gamma_{2m}(X) \\
+                \vdots          & \vdots         & \ddots & \vdots & \ \\
+                \gamma_{m1}(X)  & \gamma_{m2}(X) & \cdots & 0
+            \end{matrix} &
+            \begin{matrix}
+                \gamma_{1,m+1}(X) \\
+                \gamma_{2,m+1}(X) \\
+                \vdots \\
+                \gamma_{m,m+1}(X)
+            \end{matrix} \\ \hline
+            \begin{matrix}
+                \gamma_{m{+}1,1}(X) &
+                \gamma_{m{+}1,2}(X) &
+                \cdots &
+                \gamma_{m{+}1,m}(X)
+            \end{matrix} &
+            \mathbf{0}
+        \end{array}\right),
+        \]
+    \[
+        \gamma_{ij}(X) =
+        \left\{\begin{aligned}
+            & \frac1N \frac{1}{\lambda_i - \lambda_j} x_{ij},
+              \ 1\leq i{\neq}j \leq m{+}1, \\
+            & 0,
+              \ 1\leq i{=}j \leq m{+}1,
+        \end{aligned}\right.
+        \]
+    \[
+        \lambda_{m+1} \coloneqq 0,
+        \]
+    является допустимой.
+    При этом
+    \[
+        \|\Gamma\|_{\mathrm{op}} =
+        \frac1N
+        \frac{1}{\min_{1\leq i{\neq}j \leq m{+}1}|\lambda_i - \lambda_j|} =
+        \]
+    \[
+        = \frac1N
+         \max\left\{
+         \frac{1}{
+             \min\limits_{1\leq i{\neq}j \leq m }{|\lambda_i - \lambda_j|}},
+         \frac{1}{
+             \min\limits_{1\leq j \leq m}{|\lambda_j|}}
+         \right\}
+        \]
+\end{ksvlem}
+
+\begin{ksvthm}
+    Пусть
+    \[
+        \left\| \mathbb{B} \right\|_{\mathrm{op}}
+        \leq
+        \frac{N}{4}
+         \min\left\{
+             \min\limits_{1\leq i{\neq}j \leq m }{|\lambda_i - \lambda_j|},
+             \min\limits_{1\leq j \leq m}{|\lambda_j|}
+         \right\}.
+        \]
+    Тогда исследуемая возмущённая матрица
+    \[
+        \mathbb{A} - \mathbb{B}
+        \]
+    имеет спектр
+    \[
+        \sigma\left(\mathbb{A}\right) =
+        \left\{
+            n\lambda_1 - x_{11}^o, \ldots, n\lambda_m - x_{mm}^o, 0
+        \right\}
+        \]
+    и собственные векторы
+    \[
+        \hat{f}_j = f_j + \xi_j,
+        ,\ j{=}\overline{1,m}
+        \]
+    \[
+        \hat{f}_{j,k} = f_{j,k} + \xi_{j,k},
+        \ j{=}\overline{1,m},
+        \ k{=}\overline{1,N{-}1},
+        \]
+    где
+    \[
+        x_{jj}{\in}\mathbb{C},
+        \ \xi_j, \xi_{j,k}{\in}\mathbb{K}^{mn},
+        \]
+    \[
+        |x_{jj}|,\ \|\xi_j\|_2, \|\xi_{j,k}\|_2 \leq
+        4 \|\mathbb{B}\|_{\mathrm{op}}
+          \frac1N
+          \max\left\{
+          \frac{1}{
+              \min\limits_{1\leq i{\neq}j \leq m }{|\lambda_i - \lambda_j|}},
+          \frac{1}{
+              \min\limits_{1\leq j \leq m}{|\lambda_j|}}
+          \right\},
+        \]
+    \[
+        j{=}\overline{1,m},
+        \ k{=}\overline{1,N{-}1}.
+        \]
+\end{ksvthm}
+\subsection*{Направление дальнейших исследований: прямое произведение (произведение Кронекера)}
+Прямое произведение (произведение Кронекера)
+    двух матриц
+    \( X{=}(x_{ij}){\in}\mathbb{K}^{m_1{\times}n_1},\ \)
+    \( Y{\in}\mathbb{K}^{m_2{\times}n_2} \).
+    \( X\otimes Y \)
+    определено как блочная матрица
+\[
+    X\otimes Y =
+    \begin{pmatrix}
+        x_{11} Y & \cdots & x_{1n_1} Y \\
+        \vdots   & \ddots & \vdots \\
+        x_{m_11} Y & \cdots & x_{m_1n_1} Y \\
+    \end{pmatrix}\in\mathbb{K}^{m_1m_1\times n_1n_2}.
+    \]
+
+Пусть \( A{=}(a_{ij}){\in}\mathbb{K}^{n\times n} \)
+    и \( B\in\mathbb{K}^{m\times m} \).
+Для расширения класса допустимых матриц,
+    можно исследовать спектральные свойства прямого произведения
+    \[
+        A\otimes B =
+        \begin{pmatrix}
+            a_{11} B & \cdots & a_{1n} B \\
+            \vdots   & \ddots & \vdots \\
+            a_{n1} B & \cdots & a_{nn} B \\
+        \end{pmatrix}\in\mathbb{K}^{mn\times mn}
+        \]
+    и соответствующей возмущённой матрицы
+    \begin{equation}\label{ksv:disturbkron}
+        A\otimes B - \mathbb{F},
+    \end{equation}
+    имея в виду следующий факт:
+
+\begin{ksvlem}
+    Пусть \( h\in\mathbb{K}^n \) --- собственный вектор матрицы \( A \),
+    отвечающий собственному значению \( \lambda \),
+    а \( f\in\mathbb{K}^m \) --- собственный вектор,
+    соответствующий собственному значению \( \mu \):
+    \[
+        A h = \lambda h,
+        \]
+    \[
+        B f = \mu f.
+        \]
+    Тогда \( h\otimes f \in \mathbb{K}^{mn} \)
+    --- собственный вектор матрицы \( A\otimes B \),
+    отвечающий собственному значению \( \lambda\mu \):
+    \[
+        (A\otimes B)(h\otimes f) = \lambda\mu\ h\otimes f.
+        \]
+\end{ksvlem}
+\begin{proof}
+    Для доказательства достаточно расписать выражение по координатам.
+\end{proof}
+
+Заметим, что рассмотренная в предыдущем разделе
+    блочная матрица
+    представляет собой частный случай \eqref{ksv:disturbkron}:
+\[
+    \begin{pmatrix}
+        B      & \cdots & B \\
+        \vdots & \ddots & \vdots \\
+        B      & \cdots & B
+    \end{pmatrix} =
+    J_n \otimes B,
+        \]
+    где \( J_n \) --- матрица единиц,
+    исследованная в первом примере.
+В соответствии с леммой спектр
+    матрицы \( J_n \otimes B \)
+    есть \( \{ 0 \} \cup n\sigma(B) \).
+Заметим, что матрица \( J_n \)
+    --- сингулярная, простой структуры с кратными собственными значениями:
+    её собственному значению \( 0 \)
+    соответствует \( n{-}1 \) линейно-независимых
+    собственных векторов.
+Как мы видели в предыдущем пункте,
+    из-за требования попарной различности собственных значений,
+    это привело к появлению  в матрице \( J X \) соответствующего ядру
+    блока размера \( m(n{-}1)\times m(n{-}1) \).
+
+Таким образом, в будущем можно обобщить результаты
+    на случай прямого произведения матриц
+    (тензорного произведения операторов~\texttt{[10]}),
+    а~также избавиться от ограничений на обратимость и самосопряжённость.
+
+\smallskip\centerline{\bf Литература}
+
+% OK here it is
+% A fucking hard-coded
+% bibliography stub
+
+% \bibitem{baskakov-harmonic}
+1. 
+\emph{Анатолий~Григорьевич~Баскаков}.
+Гармонический анализ линейных операторов.
+/ А.~Г.~Баскаков.
+// Воронеж, 1987.
+
+% \bibitem{baskakov1983}
+2.
+\emph{Анатолий~Григорьевич~Баскаков}.
+Методы абстрактного гармонического анализа в теории возмущений
+линейных операторов.
+/ А.~Г.~Баскаков.
+// {\em Сибирский Математический Журнал}, 24(1):21--39, 1983.
+
+% \bibitem{bonacich1972factoring}
+3.
+\emph{Phillip Bonacich}.
+Factoring and weighting approaches to status scores and clique
+identification.
+/ Phillip Bonacich.
+// {\em Journal of Mathematical Sociology}, 2(1):113--120, 1972.
+
+% \bibitem{ilprints422}
+4.
+\emph{Lawrence Page}.
+The pagerank citation ranking: Bringing order to the web.
+/  Lawrence Page, Sergey Brin, Rajeev Motwani, and Terry Winograd.
+// Technical Report 1999-66, Stanford InfoLab, November 1999.
+   Previous number = SIDL-WP-1999-0120.
+
+% \bibitem{meyer1994sensitivity}
+5.
+\emph{Carl~D Meyer.}
+Sensitivity of the stationary distribution of a markov chain.
+// {\em SIAM Journal on Matrix Analysis and Applications},
+  15(3):715--728, 1994.
+
+% \bibitem{schwartz2006fluctuation}
+6.
+\emph{Ira~B Schwartz}.
+Fluctuation induced almost invariant sets.
+/ Ira~B Schwartz and Lora Billings.
+// Technical report, NAVAL RESEARCH LAB WASHINGTON DC PLASMA PHYSICS
+  DIV, 2006.
+
+% \bibitem{chakrabarti2008epidemic}
+7.
+\emph{Deepayan Chakrabarti}.
+Epidemic thresholds in real networks.
+/ Deepayan Chakrabarti, Yang Wang, Chenxi Wang, Jurij Leskovec, and Christos
+  Faloutsos.
+// {\em ACM Transactions on Information and System Security (TISSEC)},
+  10(4):1, 2008.
+
+% \bibitem{wang2003epidemic}
+8.
+\emph{Yang Wang et~al.}
+Epidemic spreading in real networks: An eigenvalue viewpoint.
+/ Yang Wang, Deepayan Chakrabarti, Chenxi Wang, and Christos Faloutsos.
+// In {\em Reliable Distributed Systems, 2003. Proceedings. 22nd
+  International Symposium on}, pages 25--34. IEEE, 2003.
+
+% \bibitem{cvetkovic1980spectra}
+9.
+\emph{D~Cvetkovi{\'c}.}
+Spectra of graph-theory and applications,
+/ D~Cvetkovi{\'c}, M~Doob, and H~Sachs.
+// Academic Press.~-- 1980.
+
+% \bibitem{abraham2012manifolds}
+10.
+\emph{Ralph Abraham}.
+{\em Manifolds, tensor analysis, and applications}, volume~75.
+/ Ralph Abraham, Jerrold~E Marsden, and Tudor Ratiu.
+// Springer Science \& Business Media, 2012.
+
+\end{document}
