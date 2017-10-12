@@ -1,3 +1,7 @@
+$(NAME)_flat.zip: $(ZIP_FLAT_CONTENTS)
+	rm -f $@
+	zip $@ $(ZIP_FLAT_CONTENTS)
+
 $(NAME)_pub.zip: $(ZIP_PUB_CONTENTS)
 	rm -f $@
 	zip $@ $(ZIP_PUB_CONTENTS)
@@ -101,16 +105,27 @@ pub/%.bbl: pub/%.tex pub/%.bib
 	cd pub ; $(PBIB) $*
 	touch $@
 
-pub/%.pdf: pub/%.tex pub/%.toc  pub
+pub/%.pdf: pub/%.tex pub/%.toc pub
 	@echo : Making $@
-	cd pub ; $(PDFLATEX) $*.tex
-	cd pub ; $(PDFLATEX) $*.tex
+	cd pub ; $(PTEX) $*.tex
+	cd pub ; $(PTEX) $*.tex
 	touch $@
 
-pub/$(NAME).toc: $(addprefix pub/,$(SOURCES)) pub
+pub/$(NAME).toc: $(PUB_SOURCES) pub
 	@echo : Making $@
 	cd pub ; $(PTEX) $(NAME).tex
 	touch $@
+
+# ---
+# Flat version
+# ---
+pub/$(NAME)_flat.tex: $(PUB_SOURCES)
+	cd pub ; python3 ../flatten.py $(NAME).tex --enc $(OUTENC) \
+        | iconv -f utf8 -t cp1251 \
+        > $(NAME)_flat.tex
+
+pub/$(NAME)_flat.pdf: pub/$(NAME)_flat.tex
+	cd pub ; pdflatex $(NAME)_flat.tex
 
 # ----
 # Helpers
