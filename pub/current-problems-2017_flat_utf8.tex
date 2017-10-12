@@ -4,10 +4,9 @@
 \usepackage[english,russian]{babel} % руссификации AmSLaTeX
 
 \textheight=240mm \textwidth=170mm
-% The line above messes with low-level tex
-% and causes vertical and horizontal page overflows.
-% The `geometry` package seems to fix it.
-\usepackage[textheight=240mm,textwidth=170mm]{geometry}
+\hoffset=-17mm % сдвиг влево
+\voffset=-17mm % сдвиг вверх
+
 
 % ----
 % User-specific packages
