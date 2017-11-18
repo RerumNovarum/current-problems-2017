@@ -140,7 +140,7 @@ pub/$(NAME)_flat.pdf: pub/$(NAME)_flat.tex
 	pandoc $< -o $@
 
 %.pdf: %.md
-	pandoc --latex-engine=xelatex -V mainfont='Anonymous Pro' -V mathfont='CMU Serif' $< -o $@
+	pandoc --pdf-engine=xelatex -V mainfont='Anonymous Pro' -V mathfont='CMU Serif' $< -o $@
 
 # Printing helpers
 $(NAME)-updown.pdf: $(NAME).pdf
