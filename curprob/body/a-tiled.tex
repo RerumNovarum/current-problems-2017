@@ -20,11 +20,7 @@
     В этом случае она имеет \( m \) ортонормальных
     собственных векторов \( h_1, \ldots, h_m \)
     (\( \|h_k\|_2=1,\ k{=}\overline{1,m} \)),
-    которым отвечают собственные значения\( \lambda_1, \ldots, \lambda_m \).
-    \( \lambda_1, \ldots, \lambda_m \)
-    --- её собственные значения,
-    с соответствующими им собственными векторами
-    \( h_1, \ldots, h_m \),
+    которым отвечают собственные значения \( \lambda_1, \ldots, \lambda_m \).
 
     Тогда спектр матрицы \( \mathbb{A} \) есть
     \[
@@ -35,7 +31,7 @@
     матрицы \( \mathbb{A} \)
     соответствуют блочные собственные векторы
     \[
-        f_j = \frac{1}{\sqrt{n}}(h_k, \ldots, h_k)\in\mathbb{K}^{mn},
+        f_j = \frac{1}{\sqrt{n}}(h_j, \ldots, h_j)\in\mathbb{K}^{mn},
         \ j{=}\overline{1,m},
        \]
     а ортобазис ядра образуют ортогональные образу
@@ -105,7 +101,7 @@
 Как и прежде, в качестве \( J \)
 возьмём оператор блочной диагонализации:
 \[
-    X =
+    J X =
         \left(\begin{array}{c|c}
             \begin{matrix}
                 x_{11} &  & 0 \\
@@ -125,7 +121,7 @@
     \]
 \begin{ksvlem}
     Пусть все числа \( \lambda_1, \ldots, \lambda_m \) различны.
-    Тогда тройка \( (\mathbb{K}^{m{\times}n}, J, \Gamma) \)
+    Тогда тройка \( (\mathbb{K}^{{mn}{\times}{mn}}, J, \Gamma) \)
     с трансформатором \( \Gamma \), действующим по формуле
     \[
         \Gamma X =
@@ -154,7 +150,7 @@
     \[
         \gamma_{ij}(X) =
         \left\{\begin{aligned}
-            & \frac1N \frac{1}{\lambda_i - \lambda_j} x_{ij},
+            & \frac1n \frac{1}{\lambda_i - \lambda_j} x_{ij},
               \ 1\leq i{\neq}j \leq m{+}1, \\
             & 0,
               \ 1\leq i{=}j \leq m{+}1,
@@ -167,11 +163,11 @@
     При этом
     \[
         \|\Gamma\|_{\mathrm{op}} =
-        \frac1N
+        \frac1n
         \frac{1}{\min_{1\leq i{\neq}j \leq m{+}1}|\lambda_i - \lambda_j|} =
         \]
     \[
-        = \frac1N
+        = \frac1n
          \max\left\{
          \frac{1}{
              \min\limits_{1\leq i{\neq}j \leq m }{|\lambda_i - \lambda_j|}},
@@ -186,7 +182,7 @@
     \[
         \left\| \mathbb{B} \right\|_{\mathrm{op}}
         \leq 
-        \frac{N}{4}
+        \frac{n}{4}
          \min\left\{
              \min\limits_{1\leq i{\neq}j \leq m }{|\lambda_i - \lambda_j|},
              \min\limits_{1\leq j \leq m}{|\lambda_j|}
@@ -200,37 +196,46 @@
     \[
         \sigma\left(\mathbb{A}\right) =
         \left\{
-            n\lambda_1 - x_{11}^o, \ldots, n\lambda_m - x_{mm}^o, 0
+            n\lambda_1 - x_{11}^o, \ldots, n\lambda_m - x_{mm}^o
         \right\}
+        \cup \sigma_{m{+}1}.
         \]
-    и собственные векторы
-    \[
-        \hat{f}_j = f_j + \xi_j,
-        ,\ j{=}\overline{1,m}
-        \]
-    \[
-        \hat{f}_{j,k} = f_{j,k} + \xi_{j,k},
+    Собственные векторы
+    \(
+        \hat{f}_j,
+        \ j{=}\overline{1,m}
+        \)
+    \(
+        \hat{f}_{j,k},
         \ j{=}\overline{1,m},
-        \ k{=}\overline{1,N{-}1},
-        \]
-    где
+        \ k{=}\overline{1,n{-}1},
+        \)
+    числа
     \[
         x_{jj}{\in}\mathbb{C},
         \ \xi_j, \xi_{j,k}{\in}\mathbb{K}^{mn},
         \]
-    \[
-        |x_{jj}|,\ \|\xi_j\|_2, \|\xi_{j,k}\|_2 \leq
-        4 \|\mathbb{B}\|_{\mathrm{op}} 
-          \frac1N
-          \max\left\{
-          \frac{1}{
-              \min\limits_{1\leq i{\neq}j \leq m }{|\lambda_i - \lambda_j|}},
-          \frac{1}{
-              \min\limits_{1\leq j \leq m}{|\lambda_j|}}
-          \right\},
-        \]
+    и множество \( \sigma_{m{+}1} \)
+    удовлетворяют следующим ограничениям:
+\[
+    \lvert x_{jj}^o\rvert,
+    \ \max_{\lambda\in\sigma_{m{+}1}} \lvert\lambda\rvert
+    \leq 4\|B\|,
+\]
+\[
+    \left\| \hat{f}_j - f_j \right\|_2,
+    \ \left\| \hat{f}_{j,k} - f_{j,k}\right\|_2
+    \leq
+    \frac4n \|B\|
+         \max\left\{
+         \frac{1}{
+             \min\limits_{1\leq l{\neq}p \leq m }{|\lambda_l - \lambda_p|}},
+         \frac{1}{
+             \min\limits_{1\leq l \leq m}{|\lambda_l|}}
+         \right\},
+\]
     \[
         j{=}\overline{1,m},
-        \ k{=}\overline{1,N{-}1}.
+        \ k{=}\overline{1,n{-}1}.
         \]
 \end{ksvthm}
