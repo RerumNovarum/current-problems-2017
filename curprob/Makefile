@@ -16,7 +16,7 @@ ZIP_FLAT_CONTENTS = \
 
 # Local build commands
 LTEX = xelatex
-LBIB = biber
+LBIB = bibtex
 # Deployment environment commands
 PTEX = pdflatex
 PBIB = bibtex
@@ -26,9 +26,7 @@ default: $(NAME)_local.zip
 
 all: $(NAME).zip $(NAME)_flat.zip $(NAME)_pub.zip $(NAME)_local.zip
 
-pub/$(NAME).bbl: $(PUB_SOURCES)
-	rm -f $@
-	cd pub ; $(PTEX) $(NAME).tex
-	cd pub ; $(PBIB) $(NAME)
+pub/$(NAME).bbl: $(NAME).bbl
+	iconv -t $(OUTENC)//TRANSLIT $< -o $@
 
 include Makefile.rules

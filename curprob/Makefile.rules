@@ -109,6 +109,7 @@ pub/%.pdf: pub/%.tex pub/%.toc pub
 	@echo : Making $@
 	cd pub ; $(PTEX) $*.tex
 	cd pub ; $(PTEX) $*.tex
+	cd pub ; $(PTEX) $*.tex
 	touch $@
 
 pub/$(NAME).toc: $(PUB_SOURCES) pub
