@@ -1,87 +1,212 @@
-Прямое произведение (произведение Кронекера)
-    \( X\otimes Y \)
-    двух матриц
-    \( X{=}(x_{ij}){\in}\mathbb{K}^{m_1{\times}n_1},\ \)
-    \( Y{\in}\mathbb{K}^{m_2{\times}n_2} \).
-    определено как блочная матрица
+Теперь рассмотрим произведения Кронекера
 \[
-    X\otimes Y =
+    A\otimes B =
     \begin{pmatrix}
-        x_{11} Y & \cdots & x_{1n_1} Y \\
+        a_{11} B & \cdots & a_{1N} B \\
         \vdots   & \ddots & \vdots \\
-        x_{m_11} Y & \cdots & x_{m_1n_1} Y \\
-    \end{pmatrix}\in\mathbb{K}^{m_1m_1\times n_1n_2}.
+        a_{N1} B & \cdots & a_{NN} B
+    \end{pmatrix}
+    \in \mathbb{K}^{{MN}{\times}{MN}}
+\]
+    квадратных матриц
+\( A={(a_{ij})}\in\mathbb{K}^{N{\times}N},
+ \ B={(b_{ij})}\in\mathbb{K}^{M{\times}M}. \)
+Мы будем исследовать их спектральное поведение
+    под действием малых (в смысле нормы) возмущений:
+\begin{equation}\label{nkjpcs-kronperturb}
+    A\otimes B - F.
+\end{equation}
+
+Заметим, что произведение Кронекера обладает рядом замечательных свойств~\cite{bellman-matrices-kron}:
+\begin{itemize}
+\item Ассоциативность:
+    \[ A\otimes (B\otimes C) = (A\otimes B)\otimes C. \]
+\item Дистрибутивность относительно сложения:
+    \[ (A+B)\otimes(C+D) = A\otimes C + A\otimes D + B\otimes C + B\otimes D. \]
+\item Произведение Кронекера в определённом смысле полилинейно:
+    \[ (AB)\otimes(CD) = (A\otimes C)(B\otimes D) \]
+    всегда когда произведения \( AB \) и \( CD \) определены.
+\item След матрицы \( A\otimes B \) есть \[ \operatorname{tr}(A\otimes B) = \operatorname{tr}A\operatorname{tr}B. \]
+\item Если \( A \) и \( B \) --- симметричные,
+      то и \( A\otimes B \) симметрична.
+\end{itemize}
+Заметим также, что ``tiled'' матрица из предыдущего раздела
+    может также быть представлена разложена в произведение Кронекера:
+\[
+    \mathbb{A} =
+    \begin{pmatrix}
+    A & \cdots & A\\
+    \vdots & \ddots & \vdots \\
+    A & \cdots & A\end{pmatrix} =
+        J_N\otimes A.
     \]
 
-Пусть \( A{=}(a_{ij}){\in}\mathbb{K}^{n\times n} \)
-    и \( B\in\mathbb{K}^{m\times m} \).
-Для расширения класса допустимых матриц,
-    можно исследовать спектральные свойства прямого произведения
-    \[
-        A\otimes B = 
-        \begin{pmatrix}
-            a_{11} B & \cdots & a_{1n} B \\
-            \vdots   & \ddots & \vdots \\
-            a_{n1} B & \cdots & a_{nn} B \\
-        \end{pmatrix}\in\mathbb{K}^{mn\times mn}
-        \]
-    и соответствующей возмущённой матрицы
-    \begin{equation}\label{ksv:disturbkron}
-        A\otimes B - \mathbb{F},
+\begingroup
+\textbf{Лемма}.
+\itshape
+Пусть \( A \) и \( B \) --- простой структуры,
+    То есть \( A \) имеет \( N \) собственных векторов
+    \( f_1, \ldots, f_N \)
+    и им соответствуют собственные значения \( \mu_1, \ldots, \mu_N \),
+    а \( B \) обладает собственными векторами \( h_1, \ldots, h_M \)
+    с собственными значениями \( \lambda_1, \ldots, \lambda_M \).
+Тогда матрица \( A\otimes B \) также простой структуры;
+    она имеет \( MN \) линейно-независимых собственных векторов
+    \( f_i\otimes h_j,\ i{=}\overline{1,N}, j{=}\overline{1,M} \)
+    и им соответствуют собственные значения \( \mu_i \lambda_j \).
+\endgroup
+
+
+Пусть среди попарных произведений \( \mu_i \lambda_j \)
+    лишь \( s \) чисел различны: \( \nu_1, \ldots, \nu_s \).
+Каждому собственному значению \( \nu_k \) (\( k{=}\overline{1,s} \)) соответствует
+    инвариантное подпространство
+    \[ E_k = \operatorname{span}(f_i\otimes h_j;\ \mu_i\lambda_j = v_k,\ i{=}\overline{1,N},\ j{=}\overline{1,M}) \subset \mathbb{K}^{MN}. \]
+Эти подпространства образуют разложение \( \mathbb{K}^{MN} \):
+    в прямую сумму:
+    \[ \mathbb{K}^{MN} = E_1 \oplus \cdots \oplus E_s. \]
+Это означает, что каждый вектор \( x\in\mathbb{K}^{MN} \) может единственным образом
+    быть представлен в виде суммы
+    \begin{equation}\label{nkjpcs-decomposition-x}
+        x = x_1 + \cdots + x_s,\ x_k\in E_k,\ k=\overline{1,s}.
     \end{equation}
-    имея в виду следующий факт:
+Это разложение \( \mathbb{K}^{MN} \)
+    соответствует разложению единицы \( E\in \mathbb{K}^{MN{\times}MN} \)
+    в сумму матриц спектральных проекторов:
+    \[
+        E = P_1 + \cdots + P_s.
+    \]
+Спектральный проектор \( \mathcal{P}_k \) (\(k{=}\overline{1,s}\)) определяется формулой
+    \[
+        \mathcal{P}_k x = x_k \in E_k\subset \mathbb{K}^{MN}
+    \]
+    в соответствии с разложением~\eqref{nkjpcs-decomposition-x} вектора \( x \).
+
+Для всякой матрицы \( X\in \mathbb{K}^{MN{\times}MN} \)
+    верно следующее тривиальное равенство:
+    \[
+        X = \sum_{i,j=1}^s P_i X P_j.
+    \]
+
+Теперь матрица \( A\otimes B \) может быть представлена в виде:
+    \[
+        \mathcal{A} = \sum v_j P_j.
+    \]
+
+Теперь мы можем воспроизвести рассужденрия общей схемы и получить оценки.
+
+% \begin{center}
+% \textbf{Lemma.}
+% {\it
+Естественно положить
+    \[
+        JX = \sum_{j=1}^s P_j X P_j.
+    \]
+Система уравнений
+    \[\left\{\begin{aligned}
+        & \mathcal{A}\Gamma X - (\Gamma X) \mathcal{A} = X - JX, \\
+        & J\Gamma X = 0,\ X\in \mathbb{K}^{MN{\times}MN}
+    \end{aligned}\right.\]
+    имеет единственное решение
+    \[
+        \Gamma X = \sum_{1\leq i{\neq}j \leq s} \frac{1}{\nu_i-\nu_j} P_i X P_j.
+    \]
+    Норма трансформатора \( \Gamma \) легко считается:
+    \[
+        \|\Gamma\|_{\mathrm{op}} = \gamma = \frac{1}{\min_{1\leq i{\neq}j\leq s}\lvert\nu_i - \nu_j\rvert}
+    \]
+% \/}
+% \end{center}
+
 
 \begingroup
-\textbf{Лемма.}\itshape
-    Пусть \( h\in\mathbb{K}^n \) --- собственный вектор матрицы \( A \),
-    отвечающий собственному значению \( \lambda \),
-    а \( f\in\mathbb{K}^m \) --- собственный вектор,
-    соответствующий собственному значению \( \mu \):
-    \[
-        A h = \lambda h,
+\textbf{Теорема}.
+\itshape
+    Рассмотрим возмущённую матрицу~\eqref{nkjpcs-kronperturb}
+        \[
+            A{\otimes}B - F.
         \]
+    Пусть \( A\in\mathbb{K}^{N{\times}N} \) и \( B\in\mathbb{K}^{M{\times}M} \)
+        --- простой структуры.
+    Пусть \( f_1, \ldots, f_N \) --- собственные векторы \( A \),
+        соответствующие собственным числам \( \mu_1, \ldots, \mu_N \)
+        и пусть \( h_1, \ldots, h_M \) --- собственные векторы \( B \)
+        соответствующие собственным числам \( \lambda_1, \ldots, \lambda_M \).
+    Спектр их кронекерова произведения \( A{\otimes}B \)
+        состоит из всевозможных попарных произведений \( \mu_i \lambda_j \),
+        которым соответствуют собственные векторы \( f_i\otimes h_j \).
+    Пусть из этих \( MN \) собственных значений лишь \( s \) различны:
+        \( \nu_1, \ldots \nu_s \).
+
+    Предположим
     \[
-        B f = \mu f.
-        \]
-    Тогда \( h\otimes f \in \mathbb{K}^{mn} \)
-    --- собственный вектор матрицы \( A\otimes B \),
-    отвечающий собственному значению \( \lambda\mu \):
+        \|F\| \leq \frac14 \gamma^{-1} = \frac14 \min_{1\leq i{\neq}j\leq s}\lvert\nu_i - \nu_j\rvert.
+    \]
+
+    Тогда \( A{\otimes}B - F \) подобна
+    \[ \sum_{k=1}^s \nu_k P_k - JX^o = \sum_{k=1}^s (\nu_k P_k - P_k X^o P_k) \]
+    для некоторой \( X^o \in \mathbb{K}^{MN{\times}MN} \),
+    \( \|X^o - F\|\leq 3\|F\| \).
+
+    Собственные значения \( A{\otimes}B - F \) содержатся в кругах
     \[
-        (A\otimes B)(h\otimes f) = \lambda\mu\ h\otimes f.
-        \]
-\endgroup
-\begingroup
-\textbf{Доказательство}.
-    Для доказательства достаточно расписать выражение по координатам.
+        \Omega_k = \left\{
+            \lambda\in\mathbb{C};
+            \ \lvert\lambda - \nu_k\rvert \leq 4\|F\|
+            \right\},
+        \ k{=}\overline{1,s}.
+    \]
+    В каждом круге находится хотя бы одно собственное значение.
+
+    Пусть \( \nu_k=\mu_{i_k}\lambda_{j_k} \) --- собственное значение \( A{\otimes}B \) кратности \( 1 \),
+        то есть ему соответствует единственный собственный вектор \( v_k = f_{i_k}{\otimes}h_{j_k} \).
+    Эквивалентно: пусть \( \mu_{i_k} \) --- собственное значение кратности \( 1 \) для матрицы \( A \)
+    и \( \lambda_{j_k} \) --- кратности \( 1\) для \( B \).
+    Тогда \( A{\otimes}B - F \) имеет собственное значение в круге \( \Omega_k \)
+        и ему соответствует собственный вектор \( \hat{v}_k \), лежащий в границах:
+    \[
+        \|\hat{v}_k - v_k\| \leq 4\gamma \|F\|.
+    \]
+    Если \( \nu_k \) достаточно изолирован от других точек спектра \( A{\otimes}B \):
+    \[
+        \min_{l\neq k}
+        \lvert
+        \nu_k - \nu_l
+        \rvert
+        \geq 4\|F\|,
+    \]
+    то \( \nu_k \) --- единственное собственное значение \( A{\otimes}B - F \),
+    лежащее в этом круге.
 \endgroup
 
-Заметим, что рассмотренная в предыдущем разделе
-    блочная матрица
-    представляет собой частный случай \eqref{ksv:disturbkron}:
+Для примера, вернёмся к ``tiled'' матрице:
 \[
+    J_N{\otimes}B =
     \begin{pmatrix}
-        B      & \cdots & B \\
+        B & \cdots & B \\
         \vdots & \ddots & \vdots \\
-        B      & \cdots & B
-    \end{pmatrix} =
-    J_n \otimes B,
-        \]
-    где \( J_n \) --- матрица единиц,
-    исследованная в первом примере.
-В соответствии с леммой спектр
-    матрицы \( J_n \otimes B \)
-    есть \( \{ 0 \} \cup n\sigma(B) \).
-Заметим, что матрица \( J_n \)
-    --- сингулярная, простой структуры с кратными собственными значениями:
-    её собственному значению \( 0 \)
-    соответствует \( n{-}1 \) линейно-независимых
-    собственных векторов.
-Как мы видели в предыдущем пункте,
-    из-за требования попарной различности собственных значений,
-    это привело к появлению  в матрице \( J X \) соответствующего ядру
-    блока размера \( m(n{-}1)\times m(n{-}1) \).
+        B & \cdots & B
+    \end{pmatrix}.
+\]
+В этом случае
+    \( \nu_1=N \),
+    \( \nu_2=0 \).
+Пусть \( \lambda_1,\ldots,\lambda_M \)
+    --- спектр \( B \).
+Спектр \( J_N{\otimes}B \), в соответствии с последней теоремой, есть
+    \[
+        \sigma(J_N{\otimes}B) = \left\{ \mu_i\lambda_j;\ i{=}\overline{1,2},\ j{=}\overline{1,M}\right\} = \{0\}\cup N\sigma(B).
+    \]
+Все эти собственные значения, кроме \( 0 \),
+    имеют кратность \( 1 \)
+    и изолированны друг от друга при больших \( N \).
+При этом \( \gamma=\frac1N \).
+Отсюда непосредственно следует теорема предыдущего раздела.
 
-Таким образом, в будущем можно обобщить результаты
-    на случай прямого произведения матриц
-    (тензорного произведения операторов~\cite{abraham2012manifolds}),
-    а~также избавиться от ограничений на обратимость и самосопряжённость.
+Эти результаты могут быть уточнены с помощью теоремы о расщеплении оператора~\cite{baskakov1987theorem},
+    который позволяет рассматоривать каждое собственное значение в отдельности.
+% The higher the gap between a picked eigenvalue
+%     and the rest of the spectrum
+%     the higher the precision of the estimate
+%     for the corresponding eigenvalue of the perturbed matrix.
+    
