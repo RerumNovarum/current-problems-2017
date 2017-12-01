@@ -1,0 +1,1255 @@
+\documentclass[12pt]{article}
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL old.cp1251.tex   Fri Dec  1 16:26:39 2017
+%DIF ADD new.cp1251.tex   Fri Dec  1 16:26:29 2017
+
+\usepackage[cp1251]{inputenc} % следующие две строки используются для
+\usepackage[english,russian]{babel} % руссификации AmSLaTeX
+
+\textheight=240mm \textwidth=170mm
+% The line above messes with low-level tex
+% and causes vertical and horizontal page overflows.
+% The `geometry` package seems to fix it.
+\usepackage[textheight=240mm,textwidth=170mm]{geometry}
+
+% ----
+% User-specific packages
+
+%DIF 15a15
+\usepackage{euscript,amsmath,amsfonts,amssymb,euscript,graphicx,wrapfig,multirow} %DIF > 
+%DIF -------
+\usepackage{mathtools}
+%DIF 16-17d17
+%DIF < \usepackage{amssymb}
+%DIF < \usepackage{amsmath}
+%DIF -------
+% \usepackage{marginnote}
+%DIF 19-25d18
+%DIF < \usepackage{amsthm}
+%DIF < \newtheorem*{ksvthm*}{Теорема}
+%DIF < \newtheorem{ksvthm}{Теорема}
+%DIF < \newtheorem{ksvlem}[ksvthm]{Лемма}
+%DIF < \newtheorem{ksvcrl}[ksvthm]{Следствие}
+%DIF < \theoremstyle{definition}
+%DIF < \newtheorem{ksvdfn}{Определение}
+%DIF -------
+
+% ----
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+\newcommand{\DIFscaledelfig}{0.5}
+%DIF HIGHLIGHTGRAPHICS PREAMBLE %DIF PREAMBLE
+\RequirePackage{settobox} %DIF PREAMBLE
+\RequirePackage{letltxmacro} %DIF PREAMBLE
+\newsavebox{\DIFdelgraphicsbox} %DIF PREAMBLE
+\newlength{\DIFdelgraphicswidth} %DIF PREAMBLE
+\newlength{\DIFdelgraphicsheight} %DIF PREAMBLE
+% store original definition of \includegraphics %DIF PREAMBLE
+\LetLtxMacro{\DIFOincludegraphics}{\includegraphics} %DIF PREAMBLE
+\newcommand{\DIFaddincludegraphics}[2][]{{\color{blue}\fbox{\DIFOincludegraphics[#1]{#2}}}} %DIF PREAMBLE
+\newcommand{\DIFdelincludegraphics}[2][]{% %DIF PREAMBLE
+\sbox{\DIFdelgraphicsbox}{\DIFOincludegraphics[#1]{#2}}% %DIF PREAMBLE
+\settoboxwidth{\DIFdelgraphicswidth}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\settoboxtotalheight{\DIFdelgraphicsheight}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\scalebox{\DIFscaledelfig}{% %DIF PREAMBLE
+\parbox[b]{\DIFdelgraphicswidth}{\usebox{\DIFdelgraphicsbox}\\[-\baselineskip] \rule{\DIFdelgraphicswidth}{0em}}\llap{\resizebox{\DIFdelgraphicswidth}{\DIFdelgraphicsheight}{% %DIF PREAMBLE
+\setlength{\unitlength}{\DIFdelgraphicswidth}% %DIF PREAMBLE
+\begin{picture}(1,1)% %DIF PREAMBLE
+\thicklines\linethickness{2pt} %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\framebox(1,1){}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\line( 1,1){1}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,1){\line(1,-1){1}}}% %DIF PREAMBLE
+\end{picture}% %DIF PREAMBLE
+}\hspace*{3pt}}} %DIF PREAMBLE
+} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbegin}{\DIFaddbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddend}{\DIFaddend} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbegin}{\DIFdelbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelend}{\DIFdelend} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbegin}{\DIFOaddbegin \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbegin}{\DIFOdelbegin \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbeginFL}{\DIFaddbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddendFL}{\DIFaddendFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbeginFL}{\DIFdelbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelendFL}{\DIFdelendFL} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbeginFL}{\DIFOaddbeginFL \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbeginFL}{\DIFOdelbeginFL \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+
+\begin{document}
+\noindent {УДК 517.984.3 : 519.177}
+
+\begin{center}
+    \textbf{Исследование спектральных свойств матриц
+смежностей орграфов специального вида
+методом подобных операторов}\\[3mm]
+    \textbf{Сергей Козлуков}\DIFaddbegin \\
+    \DIFadd{newkozlukov@gmail.com}\DIFaddend \\[2mm]
+    \emph{Воронежский Государственный Университет}\\[2mm]
+\end{center}
+
+\subsection*{Аннотация}
+Для исследования спектральных свойств матриц специального вида,
+в том числе матриц смежностей некоторых графов,
+используется Метод Подобных Операторов~\cite{baskakov-harmonic,baskakov1983},
+развиваемый А.~Г.~Баскаковым.
+
+\subsection*{Спектральные свойства матриц смежностей}
+Матрицей смежностей ориентированного графа на \( N \) вершинах
+    называется матрица \( A=(a_{ij}), \)
+    размера \( N\times N \),
+    в которой \( a_{ij} \) --- количество рёбер
+    из \( i \)-й вершины в \( j \)-ую.
+Марковский процесс случайного блуждания по графу
+    приводит к мере центральности
+    узлов сети~\cite{bonacich1972factoring}
+    (доминирующий собственный вектор матрицы смежностей,
+     являющийся также стационарным распределением
+     рассматриваемого процесса,
+     описывает долю времени, проводимую агентом в каждом узле).
+Изначально использовавшийся в \texttt{Google}
+    алгоритм \texttt{PageRank}~\cite{ilprints422}
+    вычисления этой меры опирается на степенной метод,
+    поэтому его скорость сходимости
+    определяется отношением абсолютных величин
+    первых двух (упорядоченных по убыванию)
+    собственных значений матрицы перехода.
+Устойчивость стационарного распределения
+    определяется \emph{спектральным зазором}
+    --- разностью между модулями первых двух
+    собственных значений матрицы перехода~\cite{meyer1994sensitivity}.
+В~\cite{schwartz2006fluctuation} описан способ
+    аппроксимации почти-инвариантных множеств,
+    также опирающийся на спектральное разложение.
+В~\cite{chakrabarti2008epidemic,wang2003epidemic}
+    для модели Susceptible-Infective-Susceptible
+    распространения вируса в~сети
+    показано, что эффективная скорость
+    распространения вируса есть произведение
+    спектрального радиуса матрицы смежностей
+    и отношения интенсивностей передачи инфекции и исцеления,
+    и что в зависимости от положения этой величины относительно единицы
+    случится либо эпидемия, либо оздоровление почти всей сети.
+
+Подробно спектральная теория графов и~е\"е приложения
+    изложены в~монографии~\cite{cvetkovic1980spectra}.
+\subsection*{Метод подобных операторов}
+Приведём в упрощённом виде, учитывающем конечномерность задачи,
+    необходимые далее нотацию и утверждения
+    метода подобных операторов~\cite{baskakov-harmonic,baskakov1983},
+    развиваемого А.~Г. Баскаковым.
+
+
+Пространство \( \mathbb{K}^n \)
+    будем считать евклидовым с скалярным произведением
+    \[
+        (x, y){=}\sum_k x_k\overline{y_k},
+        \ x{=}(x_1,\ldots, x_n),
+        \ y=(y_1,\ldots, y_n)
+        \in \mathbb{K}^n
+        \]
+    и нормой
+    \(
+        \|x\|_2^2{=}(x,x).
+        \)
+Символом \( \mathbb{K}^{m\times n} \)
+    будем обозначать линейное пространство
+    матриц размера \( m{\times}n \)
+    с элементами в поле \( \mathbb{K}\in\{\mathbb{R},\mathbb{C}\} \).
+Если \( V \) --- банахово пространство с нормой \( \|\cdot\| \),
+    то символом \( L(V) \)
+    будем обозначать банахову алгебру
+    ограниченных линейных операторов \( V\to V \)
+    с операторной нормой
+\[
+    \|A\|_{\mathrm{op}} = \sup_{\substack{\|x\|=1,\\ x\in V}} \|A x\|,\ A\in L(V).
+    \]
+Наряду с \( L(\mathbb{K}^n) \)
+    будем рассматривать изоморфную ему
+    банахову алгебру \( \mathbb{K}^{n\times n} \),
+    с одной из следующих норм:
+    \( \|A\|_{\mathrm{op}} = \sup_{\substack{\|x\|=1,\\ x\in V}} \|A x\|,\ \)
+    \( \|A\|_{\mathrm{F}} = \sqrt{\sum_{i,j} |a_{ij}|^2},\ \)
+    для матриц \( A{=}(a_{ij})\in\mathbb{K}^{n\times n} \).
+Элементы пространства
+    \( L(L(V)) \)
+    линейных преобразований операторов на \( V \),
+    и изоморфного ему пространства \( L(\mathbb{K}^{n\times n}) \),
+    будем называть \emph{трансформаторами}
+    (терминология М.~Г.~Крейна).
+
+Спектр (множество собственных значений)
+    матрицы \( A\in\mathbb{K}^{n\times n} \)
+    будем обозначать \( \sigma(A) \).
+
+Матрицы \( A_1, A_2 \in \mathbb{K}^{n\times n} \)
+    называют \emph{подобными}, если существует
+    обратимая матрица \( U\in\mathbb{K}^{n\times n} \),
+    такая что \( A_1 U = U A_2 \).
+Подобные матрицы обладают рядом совпадающих спектральных свойств:
+    они имеют одинаковый спектр (\( \sigma(A_1)=\sigma(A_2) \)),
+    а собственные векторы \( A_2 \) переходят
+    в собственные векторы \( A_1 \) под действием
+    преобразования подобия \( U \)
+    (т.е. \( A_2 x = \lambda x \implies A_1 U x = \lambda U x \)).
+
+Кортеж \( (\mathbb{K}^{n{\times}n}, J, \Gamma) \),
+    будем называть \emph{допустимой тройкой}
+    для матрицы \( A\in\mathbb{K}^{n\times n} \),
+    если выполняются следующие условия:
+\begin{enumerate}
+\item
+    \( J,\Gamma\in L(\mathbb{K}^{n{\times}n}) \),
+    причём \( J \) --- проектор.
+\item
+    \( \Gamma \) на каждой матрице \( X\in \mathbb{K}^{n\times n} \)
+    определяется уравнениями
+    \[ A\Gamma X - (\Gamma X) A = X - JX, \]
+    \[ J\Gamma X = 0. \]
+\end{enumerate}
+
+\DIFdelbegin %DIFDELCMD < \begin{ksvthm*}{О подобии (в~общей постановке см.~\cite{baskakov-harmonic,baskakov1983})}
+%DIFDELCMD <     %%%
+\DIFdelend \DIFaddbegin \begingroup
+\textbf{\DIFadd{Теорема.}}\itshape{О подобии (в~общей постановке см.~\cite{baskakov-harmonic,baskakov1983})}
+    \DIFaddend Рассмотрим матрицы \( A-B \),
+        где \( A,B\in \mathbb{K}^{n{\times}n} \).
+    Пусть \( (\mathbb{K}^{n\times n}, J, \Gamma) \)
+        --- допустимая тройка для матрицы \( A\in\mathbb{K}^{n{\times}n} \)
+        и пусть
+    \[
+        \|B\|_{\mathrm{op}} \|\Gamma\|_{\mathrm{op}} \leq \frac14.
+        \]
+    Тогда матрица \( A-B \)
+        подобна некоторой матрице \DIFdelbegin \DIFdel{\( A-X^o, \)
+        }\DIFdelend \DIFaddbegin \DIFadd{\( A - J X^o, \)
+        }\DIFaddend где \( X^o\in\mathbb{K}^{n{\times}n} \)
+        --- решение нелинейного уравнения
+    \[
+        X = B\Gamma X - (\Gamma X)J(B + B\Gamma X) + B \equiv \Phi(X),
+        \]
+        которое можно найти методом простых итераций,
+        как предел сходящейся последовательности
+        \DIFdelbegin \DIFdel{\( X^{(k)} = \Phi^{k}(X) = \Phi(\Phi(\cdots\Phi(X)\cdots)) \)}\DIFdelend \DIFaddbegin \DIFadd{\( \left(X^{(k)} = \Phi^{k}(0) = \Phi(\Phi(\cdots\Phi(0)\cdots));\  k\in\mathbb{N} \right) \)}\DIFaddend .
+    Преобразование \DIFdelbegin \DIFdel{подобие }\DIFdelend \DIFaddbegin \DIFadd{подобия }\DIFaddend матрицы \( A-B \)
+        в матрицу \( A-JX^o \) осуществляется
+        матрицей \( E+\Gamma X^o \),
+        где \( E\in\mathbb{K}^{n{\times}n} \) --- тождественная матрица.
+    Это решение удовлетворяет следующим ограничениям:
+    \[ \|X^o - B\|_{\mathrm{op}} \leq 3\|B\|_{\mathrm{op}}, \]
+    \[ \operatorname{spr}(X^o) \leq \|X^o\|_{\mathrm{op}} \leq 4\|B\|_{\mathrm{op}}. \]
+\DIFdelbegin %DIFDELCMD < \end{ksvthm*}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \endgroup
+\DIFaddend \subsection*{Пример 1. Матрица смежностей, почти-полного орграфа}
+Рассмотрим граф, заданный матрицей смежностей
+\[ A = \mathcal{J}_N - B =
+   \begin{pmatrix}1 & \cdots & 1\\ \vdots & \ddots & \vdots \\ 1 & \cdots & 1\end{pmatrix} - B,
+   \]
+    где \( \mathcal{J}_N \)~--- матрица, составленная из \( N{\times}N \) единиц,
+    а~\( B \) имеет единицы в~точности на тех \( M \) местах,
+    где в~\( A \) стоят нули.
+Это граф, полученный из полного графа
+    удалением некоторых \( M \) направленных рёбер.
+
+Спектр \( \sigma\left( \mathcal{J}_N \right) \)
+    матрицы \( \mathcal{J}_N \) легко считается:
+    \( \mathcal{J}_N^2 = N \mathcal{J}_N, \) т.е.
+    \( \lambda(\lambda - N) \)~--- аннулирующий и, что легко проверить,
+    минимальный многочлен матрицы \( \mathcal{J}_N \), а~значит
+    \( \sigma\left( \mathcal{J}_N \right) = \left\{ 0,N \right\}. \)
+Ядро и образ этой матрицы ортогональны.
+Ненулевому собственному значению
+    отвечает собственный вектор
+    \[
+        h_N = \frac{1}{\sqrt{N}}(1,\ldots, 1)\in\mathbb{R}^N,
+        \]
+    а ортонормальный базис ядра \( \operatorname{Ker}(J_N) \)
+    составляют векторы
+    \[
+        h_k = \DIFdelbegin \DIFdel{\frac{1}{k(k+1)}
+        }\DIFdelend \DIFaddbegin \DIFadd{\frac{1}{\sqrt{k(k+1)}}
+        }\DIFaddend \big(\underbrace{1,\ldots, 1}_{k\ \text{раз}}, -k, 0, \ldots, 0\big)
+        \in\mathbb{R}^N,
+        \ k=\overline{1,N{-1}}.
+        \]
+
+Так, матрица \( J_N-B \) подобна (блочной) матрице
+    \[
+        \mathcal{A} - \mathcal{B}, \]
+    \[
+        \mathcal{A} = \left(\begin{array}{c|c}
+        N & \mathbf{0} \\ \hline
+        \mathbf{0} & \mathbf{0}
+        \end{array}\right),
+        \]
+    \[
+        \mathcal{B} = U^{-1}B U,
+        \]
+    где \( U=\operatorname{columns}(h_N, h_1, \ldots, h_{N-1}) \)
+    --- матрица, составленная из собственных векторов-столбцов матрицы \( J_N \).
+
+Построим допустимую тройку для матрицы \( \mathcal{A} \).
+Проектор \( J \) естественно задать формулой
+    \[
+        JX =
+        \left(\begin{array}{c|c}
+        x_{11} & \mathbf{0} \\ \hline
+        \mathbf{0} & X_{22}
+        \end{array}\right)
+        \]
+где
+    \[
+        X =
+        \left(\begin{array}{c|c}
+        x_{11} & X_{12} \\ \hline
+        X_{21} & X_{22}
+        \end{array}\right)\in\mathbb{K}\DIFdelbegin \DIFdel{^{n{\times}n}
+        }\DIFdelend \DIFaddbegin \DIFadd{^{N{\times}N}
+        }\DIFaddend \]
+        --- записанная в блочном виде матрица,
+        \( x_{11}\in\mathbb{R}^{1\times 1} \) --- число.
+При этом матрица \( \mathcal{A} - JX \),
+    \DIFdelbegin \DIFdel{\( X\in\mathbb{R}^{n{\times}n} \)}\DIFdelend \DIFaddbegin \DIFadd{\( X\in\mathbb{R}^{N{\times}N} \)}\DIFaddend ,
+    является блочно-диагональной,
+    и её спектр есть объединение спектров её диагональных блоков:
+    \[
+        \sigma(\mathcal{A} - JX)
+        = \{ N - x_{11} \} \cup \sigma(-X_{22}).
+        \]
+
+Теперь найдём соответствующий \( J \)
+    трансформатор \( \Gamma \).
+Пусть \( \Gamma X = \begin{pmatrix}
+    \Gamma_{11}(X) & \Gamma_{12}(X) \\
+    \Gamma_{21}(X) & \Gamma_{22}(X)
+\end{pmatrix} \).
+Тогда
+\[
+    \mathcal{A} \Gamma X - (\Gamma X)\mathcal{A} =
+    N
+    \begin{pmatrix}
+        0 & \Gamma_{12}(X) \\
+        -\Gamma_{21}(X) & 0
+     \end{pmatrix},
+     \]
+Из этого и из \( J\Gamma X = 0 \) находим
+    \[
+        \Gamma X = \frac{1}{N} \begin{pmatrix} 0 & X_{12} \\ -X_{21} & 0 \end{pmatrix}.
+        \]
+При этом
+    \(
+        \|\Gamma\|_{\mathrm{op}} \leq \frac1N.
+        \)
+
+Рассматривая теперь в пространстве \DIFdelbegin \DIFdel{\( \mathbb{R}^{n{\times}n} \)
+    }\DIFdelend \DIFaddbegin \DIFadd{\( \mathbb{R}^{N{\times}N} \)
+    }\DIFaddend норму Фробениуса \( \|\cdot\|_{\mathrm{F}} \)
+    и учитывая неравенство \( \|X\|_{\mathrm{op}} \leq \|X\|_{\mathrm{F}} \),
+    получаем \( \|\mathcal{B}\|_{\mathrm{op}} =
+        \|B\|_{\mathrm{op}} \leq \|B\|_{\mathrm{F}} = \sqrt{M} \),
+    где \( M \) --- число единиц в матрице \( B \).
+
+Непосредственно следует
+\DIFdelbegin %DIFDELCMD < \begin{ksvthm}%%%
+\DIFdelend \DIFaddbegin 
+\begingroup
+\textbf{\DIFadd{Теорема.}}\itshape\DIFaddend \label{kozlukovsv:thm:almost-all-ones}
+    Пусть \( M < \frac{1}{16}N^2 \),
+        тогда спектр матрицы \( A = J_N{-}B \) можно представить в~виде
+        объединения \( \sigma\left(A\right) = \sigma_1 \cup \sigma_2 \)
+        непересекающихся
+        одноэлементного множества \( {\sigma_1 = \left\{ N{-}x_{11}^o \right\}} \)
+        и~множества \( \sigma_2=\sigma(-X_{22}^o) \), удовлетворяющих условиям:
+    \[
+        |x_{11}^o| \leq 4\sqrt{M},
+        \]
+    \[
+        \sup_{\lambda\in\sigma_2} |\lambda| \leq 4\sqrt{M}.
+        \]
+    Собственное значение \( N - x_{11}^o \) совпадает с спектральным радиусом
+        \( \operatorname{spr}(A) \),
+        и ему соответствует собственный вектор
+        \[
+            \hat{h}_N =
+            U(E+\Gamma X\DIFaddbegin \DIFadd{^o}\DIFaddend )\begin{pmatrix}1\\0\\ {\vdots}\\ 0\end{pmatrix} =
+            h_N -
+            \frac1N (
+                {X_{21}^o}^{(1)} h_1 +
+                \cdots +
+                {X_{21}^o}^{(N-1)} h_{N-1}),
+            \]
+        где \( {X_{21}^o}^{(1)}, \ldots, {X_{21}^o}^{(N-1)} \)
+        --- координаты вектора \( X_{21}^o\in\mathbb{R}^{(N{-}1){\times}1} \).
+    При этом верна оценка
+    \[
+        \left\|\hat{h}_N - h_N \right\|_2 \leq 4\frac{\sqrt{M}}{N}.
+        \]
+\DIFdelbegin %DIFDELCMD < \end{ksvthm}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \endgroup
+\DIFaddend \subsection*{Пример 2. Матрица, составленная из однородных блоков}
+Пусть теперь \DIFdelbegin \DIFdel{\( A\in \mathbb{K}^{m\times m} \)
+}\DIFdelend \DIFaddbegin \DIFadd{\( A\in \mathbb{K}^{M\times M} \)
+}\DIFaddend Будем рассматривать матрицу
+\[
+    \mathbb{A} =
+    \begin{pmatrix}
+        A      & \cdots & A \\
+        \vdots & \ddots & \vdots \\
+        A      & \cdots & A
+    \end{pmatrix}
+    \in \mathbb{K}\DIFdelbegin \DIFdel{^{mn{\times}mn}}\DIFdelend \DIFaddbegin \DIFadd{^{MN{\times}MN}}\DIFaddend ,
+    \]
+    составленную из \DIFdelbegin \DIFdel{\( n\times n \) }\DIFdelend \DIFaddbegin \DIFadd{\( N\times N \) }\DIFaddend блоков
+    и возмущённую матрицу
+\[
+    \mathbb{A} - \mathbb{B}.
+    \]
+
+\DIFdelbegin %DIFDELCMD < \begin{ksvlem}
+%DIFDELCMD <     %%%
+\DIFdelend \DIFaddbegin \begingroup
+\textbf{\DIFadd{Лемма.}}\itshape
+    \DIFaddend Пусть \( A \) --- обратимая самосопряжённая матрица.
+    В этом случае она имеет \( m \) ортонормальных
+    собственных векторов \DIFdelbegin \DIFdel{\( h_1, \ldots, h_m \)
+    (\( \|h_k\|_2=1,\ k{=}\overline{1,m} \)}\DIFdelend \DIFaddbegin \DIFadd{\( h_1, \ldots, h_M \)
+    (\( \|h_k\|_2=1,\ k{=}\overline{1,M} \)}\DIFaddend ),
+    которым отвечают собственные значения \DIFdelbegin \DIFdel{\( \lambda_1, \ldots, \lambda_m \).
+\( \lambda_1, \ldots, \lambda_m \)
+    --- её собственные значения,
+    с соответствующими им собственными векторами
+    \( h_1, \ldots, h_m \),
+}\DIFdelend \DIFaddbegin \DIFadd{\( \lambda_1, \ldots, \lambda_M \).
+}\DIFaddend 
+
+    Тогда спектр матрицы \( \mathbb{A} \) есть
+    \[
+        \sigma(\mathbb{A}) = \{0\} \cup n\sigma(A)
+        = \{ 0 \} \cup \{ n\lambda;\ \lambda\in\sigma(A) \}.
+        \]
+    Ненулевым собственным значениям \DIFdelbegin \DIFdel{\( n\lambda_1, \ldots, n\lambda_m \)
+    }\DIFdelend \DIFaddbegin \DIFadd{\( n\lambda_1, \ldots, n\lambda_M \)
+    }\DIFaddend матрицы \( \mathbb{A} \)
+    соответствуют блочные собственные векторы
+    \[
+        f_j = \DIFdelbegin \DIFdel{\frac{1}{\sqrt{n}}}\DIFdelend \DIFaddbegin \DIFadd{\frac{1}{\sqrt{N}}}\DIFaddend (h\DIFdelbegin \DIFdel{_k}\DIFdelend \DIFaddbegin \DIFadd{_j}\DIFaddend , \ldots, h\DIFdelbegin \DIFdel{_k}\DIFdelend \DIFaddbegin \DIFadd{_j}\DIFaddend )\in\mathbb{K}\DIFdelbegin \DIFdel{^{mn}}\DIFdelend \DIFaddbegin \DIFadd{^{MN}}\DIFaddend ,
+        \ j{=}\DIFdelbegin %DIFDELCMD < \overline{1,m}%%%
+\DIFdelend \DIFaddbegin \overline{1,M}\DIFaddend ,
+       \]
+    а ортобазис ядра образуют ортогональные образу
+    векторы
+    \[
+        f_{j,k} =
+        \frac{1}{\sqrt{k(k+1)}}
+        (\underbrace{e_j,\ldots,e_j}_{k\ \text{раз}}, -ke_j, 0, \ldots, 0)\in\mathbb{K}\DIFdelbegin \DIFdel{^{mn}}\DIFdelend \DIFaddbegin \DIFadd{^{MN}}\DIFaddend ,
+        \ k{=}\DIFdelbegin %DIFDELCMD < \overline{1,n-1}%%%
+\DIFdelend \DIFaddbegin \overline{1,N-1}\DIFaddend ,
+        \ j{=}\DIFdelbegin %DIFDELCMD < \overline{1,m}%%%
+\DIFdelend \DIFaddbegin \overline{1,M}\DIFaddend .
+        \]
+    Другими словами, матрица
+    \[
+        \mathbb{A} =
+        \begin{pmatrix}
+            A      & \cdots & A \\
+            \vdots & \ddots & \vdots \\
+            A      & \cdots & A
+        \end{pmatrix}
+        \in\mathbb{K}\DIFdelbegin \DIFdel{^{mn{\times}mn}
+        }\DIFdelend \DIFaddbegin \DIFadd{^{MN{\times}MN}
+        }\DIFaddend \]
+    подобна блочно-диагональной матрице
+    \[
+        \mathcal{A} =
+        \left(\DIFdelbegin %DIFDELCMD < \begin{array}{c|c}
+%DIFDELCMD <             \operatorname{diag}(n\lambda_1,\ldots,n\lambda_m) & 0 \\ \hline
+%DIFDELCMD <             0 & \mathbf{0}
+%DIFDELCMD <         \end{array}%%%
+\DIFdelend \DIFaddbegin \begin{array}{c|c}
+            \operatorname{diag}(N\lambda_1,\ldots,N\lambda_M) & 0 \\ \hline
+            0 & \mathbf{0}
+        \end{array}\DIFaddend \right),
+        \]
+    с ортогональной матрицей преобразования подобия
+    \[
+        U = \operatorname{columns}
+        \left(f_1, \ldots, f\DIFdelbegin \DIFdel{_m}\DIFdelend \DIFaddbegin \DIFadd{_M}\DIFaddend , f_{1,1}, \ldots, f\DIFdelbegin \DIFdel{_{1,n{-1}}}\DIFdelend \DIFaddbegin \DIFadd{_{1,N{-1}}}\DIFaddend , \ldots, f\DIFdelbegin \DIFdel{_{m,n{-}1}}\DIFdelend \DIFaddbegin \DIFadd{_{M,N{-}1}}\DIFaddend \right).
+        \]
+\DIFdelbegin %DIFDELCMD < \end{ksvlem}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \endgroup
+\DIFaddend 
+
+Перейдём к изучению возмущённой матрицы.
+Матрицы будем рассматривать в блочном виде:
+\[
+    X =
+        \left(\DIFdelbegin %DIFDELCMD < \begin{array}{c|c}
+%DIFDELCMD <             \begin{matrix}
+%DIFDELCMD <                 x_{11} & \cdots & x_{1m} \\
+%DIFDELCMD <                 \vdots & \ddots & \vdots \\
+%DIFDELCMD <                 x_{m1} & \cdots & x_{mm}
+%DIFDELCMD <             \end{matrix} &
+%DIFDELCMD <             \begin{matrix}
+%DIFDELCMD <                 x_{1,m+1} \\
+%DIFDELCMD <                 \vdots \\
+%DIFDELCMD <                 x_{m,m+1}
+%DIFDELCMD <             \end{matrix} \\ \hline
+%DIFDELCMD <             \begin{matrix}
+%DIFDELCMD <                 x_{m+1,1} &
+%DIFDELCMD <                 \cdots &
+%DIFDELCMD <                 x_{m+1,m}
+%DIFDELCMD <             \end{matrix} &
+%DIFDELCMD <             X_{m+1,m+1}
+%DIFDELCMD <         \end{array}%%%
+\DIFdelend \DIFaddbegin \begin{array}{c|c}
+            \begin{matrix}
+                x_{11} & \cdots & x_{1M} \\
+                \vdots & \ddots & \vdots \\
+                x_{M1} & \cdots & x_{MM}
+            \end{matrix} &
+            \begin{matrix}
+                x_{1,M+1} \\
+                \vdots \\
+                x_{M,M+1}
+            \end{matrix} \\ \hline
+            \begin{matrix}
+                x_{M+1,1} &
+                \cdots &
+                x_{M+1,M}
+            \end{matrix} &
+            X_{M+1,M+1}
+        \end{array}\DIFaddend \right),
+    \]
+где
+\( X_{ij}      {=} x_{ij}      {\in} \mathbb{K} \),
+\DIFdelbegin \DIFdel{\( X_{m{+}1,j} {=} x_{m{+}1,j} {\in} \mathbb{K} \),
+\( X_{i,m{+}1} {=} x_{i,m{+}1} {\in} \mathbb{K} \)
+}\DIFdelend \DIFaddbegin \DIFadd{\( X_{M{+}1,j} {=} x_{M{+}1,j} {\in} \mathbb{K} \),
+\( X_{i,M{+}1} {=} x_{i,M{+}1} {\in} \mathbb{K} \)
+}\DIFaddend для \( 1\leq i,j \leq m \),
+а в нижнем правом углу расположен блок
+\DIFdelbegin \DIFdel{\( X_{m{+}1,m{+}1} {\in} \mathbb{K}^{m(n{-}1){\times}m(n-1)} \)}\DIFdelend \DIFaddbegin \DIFadd{\( X_{M{+}1,M{+}1} {\in} \mathbb{K}^{M(N{-}1){\times}M(N-1)} \)}\DIFaddend .
+Как и прежде, в качестве \( J \)
+возьмём оператор блочной диагонализации:
+\[
+    \DIFaddbegin \DIFadd{J }\DIFaddend X =
+        \left(\DIFdelbegin %DIFDELCMD < \begin{array}{c|c}
+%DIFDELCMD <             \begin{matrix}
+%DIFDELCMD <                 x_{11} &  & 0 \\
+%DIFDELCMD <                  & \ddots &  \\
+%DIFDELCMD <                 0 &  & x_{mm}
+%DIFDELCMD <             \end{matrix} &
+%DIFDELCMD <             \begin{matrix}
+%DIFDELCMD <                 0 \\
+%DIFDELCMD <                 \vdots \\
+%DIFDELCMD <                 0
+%DIFDELCMD <             \end{matrix} \\ \hline
+%DIFDELCMD <             \begin{matrix}
+%DIFDELCMD <                 0 & \cdots & 0
+%DIFDELCMD <             \end{matrix} &
+%DIFDELCMD <             X_{m+1,m+1}
+%DIFDELCMD <         \end{array}%%%
+\DIFdelend \DIFaddbegin \begin{array}{c|c}
+            \begin{matrix}
+                x_{11} &  & 0 \\
+                 & \ddots &  \\
+                0 &  & x_{MM}
+            \end{matrix} &
+            \begin{matrix}
+                0 \\
+                \vdots \\
+                0
+            \end{matrix} \\ \hline
+            \begin{matrix}
+                0 & \cdots & 0
+            \end{matrix} &
+            X_{M+1,M+1}
+        \end{array}\DIFaddend \right),
+    \]
+\DIFdelbegin %DIFDELCMD < \begin{ksvlem}
+%DIFDELCMD <     %%%
+\DIFdelend \DIFaddbegin \begingroup
+\textbf{\DIFadd{Лемма.}}\itshape
+    \DIFaddend Пусть все числа \DIFdelbegin \DIFdel{\( \lambda_1, \ldots, \lambda_m \) }\DIFdelend \DIFaddbegin \DIFadd{\( \lambda_1, \ldots, \lambda_M \) }\DIFaddend различны.
+    Тогда тройка \DIFdelbegin \DIFdel{\( (\mathbb{K}^{m{\times}n}, J, \Gamma) \)
+    }\DIFdelend \DIFaddbegin \DIFadd{\( (\mathbb{K}^{{MN}{\times}{MN}}, J, \Gamma) \)
+    }\DIFaddend с трансформатором \( \Gamma \), действующим по формуле
+    \[
+        \Gamma X =
+        \left(\DIFdelbegin %DIFDELCMD < \begin{array}{c|c}
+%DIFDELCMD <             \begin{matrix}
+%DIFDELCMD <                 0               & \gamma_{12}(X) & \cdots & \gamma_{1m}(X) \\
+%DIFDELCMD <                 \gamma_{21}(X)  & 0              & \cdots & \gamma_{2m}(X) \\
+%DIFDELCMD <                 \vdots          & \vdots         & \ddots & \vdots & \ \\
+%DIFDELCMD <                 \gamma_{m1}(X)  & \gamma_{m2}(X) & \cdots & 0
+%DIFDELCMD <             \end{matrix} &
+%DIFDELCMD <             \begin{matrix}
+%DIFDELCMD <                 \gamma_{1,m+1}(X) \\
+%DIFDELCMD <                 \gamma_{2,m+1}(X) \\
+%DIFDELCMD <                 \vdots \\
+%DIFDELCMD <                 \gamma_{m,m+1}(X)
+%DIFDELCMD <             \end{matrix} \\ \hline
+%DIFDELCMD <             \begin{matrix}
+%DIFDELCMD <                 \gamma_{m{+}1,1}(X) &
+%DIFDELCMD <                 \gamma_{m{+}1,2}(X) &
+%DIFDELCMD <                 \cdots &
+%DIFDELCMD <                 \gamma_{m{+}1,m}(X)
+%DIFDELCMD <             \end{matrix} &
+%DIFDELCMD <             \mathbf{0}
+%DIFDELCMD <         \end{array}%%%
+\DIFdelend \DIFaddbegin \begin{array}{c|c}
+            \begin{matrix}
+                0               & \gamma_{12}(X) & \cdots & \gamma_{1M}(X) \\
+                \gamma_{21}(X)  & 0              & \cdots & \gamma_{2M}(X) \\
+                \vdots          & \vdots         & \ddots & \vdots & \ \\
+                \gamma_{M1}(X)  & \gamma_{M2}(X) & \cdots & 0
+            \end{matrix} &
+            \begin{matrix}
+                \gamma_{1,M+1}(X) \\
+                \gamma_{2,M+1}(X) \\
+                \vdots \\
+                \gamma_{M,M+1}(X)
+            \end{matrix} \\ \hline
+            \begin{matrix}
+                \gamma_{M{+}1,1}(X) &
+                \gamma_{M{+}1,2}(X) &
+                \cdots &
+                \gamma_{M{+}1,M}(X)
+            \end{matrix} &
+            \mathbf{0}
+        \end{array}\DIFaddend \right),
+        \]
+    \[
+        \gamma_{ij}(X) =
+        \left\{\DIFdelbegin %DIFDELCMD < \begin{aligned}
+%DIFDELCMD <             & \frac1N \frac{1}{\lambda_i - \lambda_j} x_{ij},
+%DIFDELCMD <               \ 1\leq i{\neq}j \leq m{+}1, \\
+%DIFDELCMD <             & 0,
+%DIFDELCMD <               \ 1\leq i{=}j \leq m{+}1,
+%DIFDELCMD <         \end{aligned}%%%
+\DIFdelend \DIFaddbegin \begin{aligned}
+            & \frac1N \frac{1}{\lambda_i - \lambda_j} x_{ij},
+              \ 1\leq i{\neq}j \leq M{+}1, \\
+            & 0,
+              \ 1\leq i{=}j \leq M{+}1,
+        \end{aligned}\DIFaddend \right.
+        \]
+    \[
+        \lambda\DIFdelbegin \DIFdel{_{m+1} }\DIFdelend \DIFaddbegin \DIFadd{_{M+1} }\DIFaddend \coloneqq 0,
+        \]
+    является допустимой.
+    При этом
+    \[
+        \|\Gamma\|_{\mathrm{op}} =
+        \frac1N
+        \DIFdelbegin \DIFdel{\frac{1}{\min_{1\leq i{\neq}j \leq m{+}1}|\lambda_i - \lambda_j|} }\DIFdelend \DIFaddbegin \DIFadd{\frac{1}{\min_{1\leq i{\neq}j \leq M{+}1}|\lambda_i - \lambda_j|} }\DIFaddend =
+        \]
+    \[
+        = \frac1N
+         \max\left\{
+         \DIFdelbegin \DIFdel{\frac{1}{
+             \min\limits_{1\leq i{\neq}j \leq m }{|\lambda_i - \lambda_j|}}}\DIFdelend \DIFaddbegin \DIFadd{\frac{1}{
+             \min\limits_{1\leq i{\neq}j \leq M }{|\lambda_i - \lambda_j|}}}\DIFaddend ,
+         \DIFdelbegin \DIFdel{\frac{1}{
+             \min\limits_{1\leq j \leq m}{|\lambda_j|}}
+         }\DIFdelend \DIFaddbegin \DIFadd{\frac{1}{
+             \min\limits_{1\leq j \leq M}{|\lambda_j|}}
+         }\DIFaddend \right\}
+        \]
+\DIFdelbegin %DIFDELCMD < \end{ksvlem}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \endgroup
+\DIFaddend 
+
+\DIFdelbegin %DIFDELCMD < \begin{ksvthm}
+%DIFDELCMD <     %%%
+\DIFdelend \DIFaddbegin \begingroup
+\textbf{\DIFadd{Теорема.}}\itshape
+    \DIFaddend Пусть
+    \[
+        \left\| \mathbb{B} \right\|_{\mathrm{op}}
+        \leq
+        \frac{N}{4}
+         \min\left\{
+             \min\limits\DIFdelbegin \DIFdel{_{1\leq i{\neq}j \leq m }{|\lambda_i - \lambda_j|}}\DIFdelend \DIFaddbegin \DIFadd{_{1\leq i{\neq}j \leq M }{|\lambda_i - \lambda_j|}}\DIFaddend ,
+             \min\limits\DIFdelbegin \DIFdel{_{1\leq j \leq m}{|\lambda_j|}
+         }\DIFdelend \DIFaddbegin \DIFadd{_{1\leq j \leq M}{|\lambda_j|}
+         }\DIFaddend \right\}.
+        \]
+    Тогда исследуемая возмущённая матрица
+    \[
+        \mathbb{A} - \mathbb{B}
+        \]
+    имеет спектр
+    \[
+        \sigma\left(\mathbb{A}\right) =
+        \left\{
+            n\lambda_1 - x_{11}^o, \ldots, \DIFdelbegin \DIFdel{n}\DIFdelend \DIFaddbegin \DIFadd{N}\DIFaddend \lambda\DIFdelbegin \DIFdel{_m }\DIFdelend \DIFaddbegin \DIFadd{_M }\DIFaddend - x\DIFdelbegin \DIFdel{_{mm}}\DIFdelend \DIFaddbegin \DIFadd{_{MM}}\DIFaddend ^o
+        \DIFdelbegin \DIFdel{, 0
+        }\DIFdelend \right\}
+        \DIFaddbegin \DIFadd{\cup \sigma_{M{+}1}.
+        }\DIFaddend \]
+    \DIFdelbegin \DIFdel{и собственные }\DIFdelend \DIFaddbegin \DIFadd{Собственные }\DIFaddend векторы
+    \DIFaddbegin \DIFadd{\(
+        \hat{f}_j,
+        \ j{=}\overline{1,M}
+        \)
+    \(
+        \hat{f}_{j,k},
+        \ j{=}\overline{1,M},
+        \ k{=}\overline{1,N{-}1},
+        \)
+    числа
+    }\DIFaddend \[
+        \DIFdelbegin %DIFDELCMD < \hat{f}%%%
+\DIFdel{_j = f_j + \xi_j,
+        ,\ j}%DIFDELCMD < {%%%
+\DIFdel{=}%DIFDELCMD < }\overline{1,m}
+%DIFDELCMD <         \]
+%DIFDELCMD <     \[
+%DIFDELCMD <         \hat{f}%%%
+\DIFdel{_{j,k} = f_{j,k} + \xi_{j,k},
+        \ j}%DIFDELCMD < {%%%
+\DIFdel{=}%DIFDELCMD < }\overline{1,m}%%%
+\DIFdel{,
+        \ k}%DIFDELCMD < {%%%
+\DIFdel{=}%DIFDELCMD < }\overline{1,N{-}1}%%%
+\DIFdel{,
+        }%DIFDELCMD < \]
+%DIFDELCMD <     %%%
+\DIFdel{где
+    }%DIFDELCMD < \[
+%DIFDELCMD <         %%%
+\DIFdelend x_{jj}{\in}\mathbb{C},
+        \ \xi_j, \xi_{j,k}{\in}\mathbb{K}\DIFdelbegin \DIFdel{^{mn}}\DIFdelend \DIFaddbegin \DIFadd{^{MN}}\DIFaddend ,
+        \]
+    \DIFaddbegin \DIFadd{и множество \( \sigma_{M{+}1} \)
+    удовлетворяют следующим ограничениям:
+}\DIFaddend \[
+    \DIFdelbegin \DIFdel{|}\DIFdelend \DIFaddbegin \lvert \DIFaddend x_{jj}\DIFdelbegin \DIFdel{|}\DIFdelend \DIFaddbegin \DIFadd{^o}\rvert\DIFaddend ,
+    \ \DIFaddbegin \DIFadd{\max_{\lambda\in\sigma_{M{+}1}} }\lvert\DIFadd{\lambda}\rvert
+    \DIFadd{\leq 4}\DIFaddend \|\DIFdelbegin \DIFdel{\xi_j}\DIFdelend \DIFaddbegin \DIFadd{B}\DIFaddend \|\DIFaddbegin \DIFadd{,
+}\]
+\[
+    \left\| \hat{f}\DIFadd{_j - f_j }\right\|\DIFaddend _2,
+    \DIFdelbegin \DIFdel{\|\xi}\DIFdelend \DIFaddbegin \DIFadd{\ }\left\| \hat{f}\DIFaddend _{j,k} \DIFdelbegin \DIFdel{\|}\DIFdelend \DIFaddbegin \DIFadd{- f_{j,k}}\right\|\DIFaddend _2
+    \leq
+    \DIFdelbegin \DIFdel{4 }\DIFdelend \DIFaddbegin \frac4n \DIFaddend \|\DIFdelbegin \DIFdel{\mathbb{B}}\DIFdelend \DIFaddbegin \DIFadd{B}\DIFaddend \|
+         \DIFdelbegin \DIFdel{_{\mathrm{op}}
+          }%DIFDELCMD < \frac1N
+%DIFDELCMD <           %%%
+\DIFdelend \max\left\{
+         \DIFdelbegin \DIFdel{\frac{1}{
+              \min\limits_{1\leq i{\neq}j \leq m }{|\lambda_i - \lambda_j|}}}\DIFdelend \DIFaddbegin \DIFadd{\frac{1}{
+             \min\limits_{1\leq l{\neq}p \leq M }{|\lambda_l - \lambda_p|}}}\DIFaddend ,
+         \DIFdelbegin \DIFdel{\frac{1}{
+              \min\limits_{1\leq j \leq m}{|\lambda_j|}}
+          }\DIFdelend \DIFaddbegin \DIFadd{\frac{1}{
+             \min\limits_{1\leq l \leq M}{|\lambda_l|}}
+         }\DIFaddend \right\},
+\]
+    \DIFdelbegin \[
+        \DIFdel{j}{\DIFdel{=}}\DIFdel{\overline{1,m},
+        \ k}{\DIFdel{=}}\DIFdel{\overline{1,N{-}1}.
+        }\]
+%DIFAUXCMD
+%DIFDELCMD < \end{ksvthm}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \[
+        \DIFadd{j}{\DIFadd{=}}\overline{1,M}\DIFadd{,
+        \ k}{\DIFadd{=}}\overline{1,N{-}1}\DIFadd{.
+        }\]
+\endgroup
+\DIFaddend \subsection*{Направление дальнейших исследований: прямое произведение (произведение Кронекера)}
+\DIFdelbegin \DIFdel{Прямое произведение (произведение }\DIFdelend \DIFaddbegin \DIFadd{Теперь рассмотрим произведения }\DIFaddend Кронекера
+\DIFdelbegin \DIFdel{)
+    \( X\otimes Y \)
+    двух }\DIFdelend \DIFaddbegin \[
+    \DIFadd{A\otimes B =
+    \begin{pmatrix}
+        a_{11} B & \cdots & a_{1N} B \\
+        \vdots   & \ddots & \vdots \\
+        a_{N1} B & \cdots & a_{NN} B
+    \end{pmatrix}
+    \in \mathbb{K}^{{MN}{\times}{MN}}
+}\]
+    \DIFadd{квадратных }\DIFaddend матриц
+\DIFdelbegin \DIFdel{\( X{=}(x_{ij}){\in}\mathbb{K}^{m_1{\times}n_1},\ \)
+    \( Y{\in}\mathbb{K}^{m_2{\times}n_2} \).
+определено как блочная }\DIFdelend \DIFaddbegin \DIFadd{\( A={(a_{ij})}\in\mathbb{K}^{N{\times}N},
+ \ B={(b_{ij})}\in\mathbb{K}^{M{\times}M}. \)
+Мы будем исследовать их спектральное поведение
+    под действием малых (в смысле нормы) возмущений:
+}\begin{equation}\DIFadd{\label{nkjpcs-kronperturb}
+    A\otimes B - F.
+}\end{equation}
+
+\DIFadd{Заметим, что произведение Кронекера обладает рядом замечательных свойств~\mbox{%DIFAUXCMD
+\cite{bellman-matrices-kron}}\hspace{0pt}%DIFAUXCMD
+:
+}\begin{itemize}
+\item \DIFadd{Ассоциативность:
+    }\[ \DIFadd{A\otimes (B\otimes C) = (A\otimes B)\otimes C. }\]
+\item \DIFadd{Дистрибутивность относительно сложения:
+    }\[ \DIFadd{(A+B)\otimes(C+D) = A\otimes C + A\otimes D + B\otimes C + B\otimes D. }\]
+\item \DIFadd{Произведение Кронекера в определённом смысле полилинейно:
+    }\[ \DIFadd{(AB)\otimes(CD) = (A\otimes C)(B\otimes D) }\]
+    \DIFadd{всегда когда произведения \( AB \) и \( CD \) определены.
+}\item \DIFadd{След матрицы \( A\otimes B \) есть }\[ \DIFadd{\operatorname{tr}(A\otimes B) = \operatorname{tr}A\operatorname{tr}B. }\]
+\item \DIFadd{Если \( A \) и \( B \) --- симметричные,
+      то и \( A\otimes B \) симметрична.
+}\end{itemize}
+\DIFadd{Заметим также, что ``tiled'' }\DIFaddend матрица \DIFaddbegin \DIFadd{из предыдущего раздела
+    может также быть представлена разложена в произведение Кронекера:
+}\DIFaddend \[
+    \DIFdelbegin \DIFdel{X\otimes Y }\DIFdelend \DIFaddbegin \DIFadd{\mathbb{A} }\DIFaddend =
+    \DIFdelbegin %DIFDELCMD < \begin{pmatrix}
+%DIFDELCMD <         x_{11} Y & \cdots & x_{1n_1} Y \\
+%DIFDELCMD <         \vdots   & \ddots & \vdots \\
+%DIFDELCMD <         x_{m_11} Y & \cdots & x_{m_1n_1} Y \\
+%DIFDELCMD <     \end{pmatrix}%%%
+\DIFdel{\in\mathbb{K}^{m_1m_1\times n_1n_2}}\DIFdelend \DIFaddbegin \begin{pmatrix}
+    A & \cdots & A\\
+    \vdots & \ddots & \vdots \\
+    A & \cdots & A\end{pmatrix} \DIFadd{=
+        J_N\otimes A}\DIFaddend .
+    \]
+
+\DIFaddbegin \begingroup
+\textbf{\DIFadd{Лемма}}\DIFadd{.
+}\itshape
+\DIFaddend Пусть \DIFdelbegin \DIFdel{\( A{=}(a_{ij}){\in}\mathbb{K}^{n\times n} \)
+    }\DIFdelend \DIFaddbegin \DIFadd{\( A \) }\DIFaddend и \DIFdelbegin \DIFdel{\( B\in\mathbb{K}^{m\times m} \)}\DIFdelend \DIFaddbegin \DIFadd{\( B \) --- простой структуры,
+    То есть \( A \) имеет \( N \) собственных векторов
+    \( f_1, \ldots, f_N \)
+    и им соответствуют собственные значения \( \mu_1, \ldots, \mu_N \),
+    а \( B \) обладает собственными векторами \( h_1, \ldots, h_M \)
+    с собственными значениями \( \lambda_1, \ldots, \lambda_M \)}\DIFaddend .
+\DIFdelbegin \DIFdel{Для расширения класса допустимых матриц,
+    можно исследовать спектральные свойства прямого произведения
+    }\[
+        \DIFdel{A\otimes B =
+        \begin{pmatrix}
+            a_{11} B & \cdots & a_{1n} B \\
+            \vdots   & \ddots & \vdots \\
+            a_{n1} B & \cdots & a_{nn} B \\
+        \end{pmatrix}\in\mathbb{K}^{mn\times mn}
+        }\]
+    %DIFAUXCMD
+\DIFdelend \DIFaddbegin \DIFadd{Тогда матрица \( A\otimes B \) также простой структуры;
+    она имеет \( MN \) линейно-независимых собственных векторов
+    \( f_i\otimes h_j,\ i{=}\overline{1,N}, j{=}\overline{1,M} \)
+    }\DIFaddend и \DIFdelbegin \DIFdel{соответствующей возмущённой }\DIFdelend \DIFaddbegin \DIFadd{им соответствуют собственные значения \( \mu_i \lambda_j \).
+}\endgroup
+
+
+\DIFadd{Пусть среди попарных произведений \( \mu_i \lambda_j \)
+    лишь \( s \) чисел различны: \( \nu_1, \ldots, \nu_s \).
+Каждому собственному значению \( \nu_k \) (\( k{=}\overline{1,s} \)) соответствует
+    инвариантное подпространство
+    }\[ \DIFadd{E_k = \operatorname{span}(f_i\otimes h_j;\ \mu_i\lambda_j = v_k,\ i}{\DIFadd{=}}\DIFadd{\overline{1,N},\ j}{\DIFadd{=}}\DIFadd{\overline{1,M}) \subset \mathbb{K}^{MN}. }\]
+\DIFadd{Эти подпространства образуют разложение \( \mathbb{K}^{MN} \):
+    в прямую сумму:
+    }\[ \DIFadd{\mathbb{K}^{MN} = E_1 \oplus \cdots \oplus E_s. }\]
+\DIFadd{Это означает, что каждый вектор \( x\in\mathbb{K}^{MN} \) может единственным образом
+    быть представлен в виде суммы
+    }\begin{equation}\DIFadd{\label{nkjpcs-decomposition-x}
+        x = x_1 + \cdots + x_s,\ x_k\in E_k,\ k=\overline{1,s}.
+    }\end{equation}
+\DIFadd{Это разложение \( \mathbb{K}^{MN} \)
+    соответствует разложению единицы \( E\in \mathbb{K}^{MN{\times}MN} \)
+    в сумму матриц спектральных проекторов:
+    }\[
+        \DIFadd{E = P_1 + \cdots + P_s.
+    }\]
+\DIFadd{Спектральный проектор \( \mathcal{P}_k \) (\(k{=}\overline{1,s}\)) определяется формулой
+    }\[
+        \DIFadd{\mathcal{P}_k x = x_k \in E_k\subset \mathbb{K}^{MN}
+    }\]
+    \DIFadd{в соответствии с разложением~}\eqref{nkjpcs-decomposition-x} \DIFadd{вектора \( x \).
+}
+
+\DIFadd{Для всякой }\DIFaddend матрицы \DIFdelbegin \begin{displaymath}\DIFdel{%DIFDELCMD < \label{ksv:disturbkron}%%%
+        A\otimes B - \mathbb{F},
+    }\end{displaymath}
+    %DIFAUXCMD
+\DIFdel{имея }\DIFdelend \DIFaddbegin \DIFadd{\( X\in \mathbb{K}^{MN{\times}MN} \)
+    верно следующее тривиальное равенство:
+    }\[
+        \DIFadd{X = \sum_{i,j=1}^s P_i X P_j.
+    }\]
+
+\DIFadd{Теперь матрица \( A\otimes B \) может быть представлена }\DIFaddend в \DIFdelbegin \DIFdel{виду следующий факт:
+    }\DIFdelend \DIFaddbegin \DIFadd{виде:
+    }\[
+        \DIFadd{\mathcal{A} = \sum v_j P_j.
+    }\]
+\DIFaddend 
+
+\DIFdelbegin %DIFDELCMD < \begin{ksvlem}
+%DIFDELCMD <     %%%
+\DIFdelend \DIFaddbegin \DIFadd{Теперь мы можем воспроизвести рассужденрия общей схемы и получить оценки.
+}
+
+%DIF >  \begin{center}
+%DIF >  \textbf{Lemma.}
+%DIF >  {\it
+\DIFadd{Естественно положить
+    }\[
+        \DIFadd{JX = \sum_{j=1}^s P_j X P_j.
+    }\]
+\DIFadd{Система уравнений
+    }\[\DIFadd{\left\{\begin{aligned}
+        & \mathcal{A}\Gamma X - (\Gamma X) \mathcal{A} = X - JX, \\
+        & J\Gamma X = 0,\ X\in \mathbb{K}^{MN{\times}MN}
+    \end{aligned}\right.}\]
+    \DIFadd{имеет единственное решение
+    }\[
+        \DIFadd{\Gamma X = \sum_{1\leq i{\neq}j \leq s} \frac{1}{\nu_i-\nu_j} P_i X P_j.
+    }\]
+    \DIFadd{Норма трансформатора \( \Gamma \) легко считается:
+    }\[
+        \DIFadd{\|\Gamma\|_{\mathrm{op}} = \gamma = \frac{1}{\min_{1\leq i{\neq}j\leq s}\lvert\nu_i - \nu_j\rvert}
+    }\]
+%DIF >  \/}
+%DIF >  \end{center}
+
+
+\begingroup
+\textbf{\DIFadd{Теорема}}\DIFadd{.
+}\itshape
+    \DIFadd{Рассмотрим возмущённую матрицу~}\eqref{nkjpcs-kronperturb}
+        \[
+            \DIFadd{A}{\DIFadd{\otimes}}\DIFadd{B - F.
+        }\]
+    \DIFaddend Пусть \DIFdelbegin \DIFdel{\( h\in\mathbb{K}^n \) }\DIFdelend \DIFaddbegin \DIFadd{\( A\in\mathbb{K}^{N{\times}N} \) и \( B\in\mathbb{K}^{M{\times}M} \)
+        }\DIFaddend --- \DIFdelbegin \DIFdel{собственный вектор матрицы }\DIFdelend \DIFaddbegin \DIFadd{простой структуры.
+    Пусть \( f_1, \ldots, f_N \) --- собственные векторы }\DIFaddend \( A \),
+        \DIFdelbegin \DIFdel{отвечающий собственному значению \( \lambda \),
+    а \( f\in\mathbb{K}^m \) }\DIFdelend \DIFaddbegin \DIFadd{соответствующие собственным числам \( \mu_1, \ldots, \mu_N \)
+        и пусть \( h_1, \ldots, h_M \) }\DIFaddend --- \DIFdelbegin \DIFdel{собственный вектор,
+        соответствующий собственному значению \( \mu \):
+        }\DIFdelend \DIFaddbegin \DIFadd{собственные векторы \( B \)
+        соответствующие собственным числам \( \lambda_1, \ldots, \lambda_M \).
+    Спектр их кронекерова произведения \( A{\otimes}B \)
+        состоит из всевозможных попарных произведений \( \mu_i \lambda_j \),
+        которым соответствуют собственные векторы \( f_i\otimes h_j \).
+    Пусть из этих \( MN \) собственных значений лишь \( s \) различны:
+        \( \nu_1, \ldots \nu_s \).
+}
+
+    \DIFadd{Предположим
+    }\DIFaddend \[
+        \DIFdelbegin \DIFdel{A h }\DIFdelend \DIFaddbegin \DIFadd{\|F\| \leq }\frac14 \DIFadd{\gamma^{-1} }\DIFaddend = \DIFdelbegin \DIFdel{\lambda h,
+        }\DIFdelend \DIFaddbegin \frac14 \DIFadd{\min_{1\leq i{\neq}j\leq s}}\lvert\DIFadd{\nu_i - \nu_j}\rvert\DIFadd{.
+    }\DIFaddend \]
+\DIFdelbegin \[
+        \DIFdel{B f = \mu f.
+        }\]
+    %DIFAUXCMD
+\DIFdelend \DIFaddbegin 
+
+    \DIFaddend Тогда \DIFdelbegin \DIFdel{\( h\otimes f \in \mathbb{K}^{mn} \)
+    }\DIFdelend \DIFaddbegin \DIFadd{\( A{\otimes}B - F \) подобна
+    }\[ \DIFadd{\sum_{k=1}^s \nu_k P_k - JX^o = \sum_{k=1}^s (\nu_k P_k - P_k X^o P_k) }\]
+    \DIFadd{для некоторой \( X^o \in \mathbb{K}^{MN{\times}MN} \),
+    \( \|X^o - F\|\leq 3\|F\| \).
+}
+
+    \DIFadd{Собственные значения \( A{\otimes}B - F \) содержатся в кругах
+    }\[
+        \DIFadd{\Omega_k = \left\{
+            \lambda\in\mathbb{C};
+            \ \lvert\lambda - \nu_k\rvert \leq 4\|F\|
+            \right\},
+        \ k}{\DIFadd{=}}\DIFadd{\overline{1,s}.
+    }\]
+    \DIFadd{В каждом круге находится хотя бы одно собственное значение.
+}
+
+    \DIFadd{Пусть \( \nu_k=\mu_{i_k}\lambda_{j_k} \) }\DIFaddend --- \DIFaddbegin \DIFadd{собственное значение \( A{\otimes}B \) кратности \( 1 \),
+        то есть ему соответствует единственный }\DIFaddend собственный вектор \DIFaddbegin \DIFadd{\( v_k = f_{i_k}{\otimes}h_{j_k} \).
+    Эквивалентно: пусть \( \mu_{i_k} \) --- собственное значение кратности \( 1 \) для }\DIFaddend матрицы \DIFdelbegin \DIFdel{\( A\otimes B \), отвечающий собственному значению \( \lambda\mu \):
+    }\DIFdelend \DIFaddbegin \DIFadd{\( A \)
+    и \( \lambda_{j_k} \) --- кратности \( 1\) для \( B \).
+    Тогда \( A{\otimes}B - F \) имеет собственное значение в круге \( \Omega_k \)
+        и ему соответствует собственный вектор \( \hat{v}_k \), лежащий в границах:
+    }\DIFaddend \[
+        \DIFdelbegin \DIFdel{(A\otimes B)(h\otimes f) = \lambda\mu\ h\otimes f}\DIFdelend \DIFaddbegin \DIFadd{\|}\hat{v}\DIFadd{_k - v_k\| \leq 4\gamma \|F\|}\DIFaddend .
+    \]
+    \DIFdelbegin %DIFDELCMD < \end{ksvlem}
+%DIFDELCMD < \begin{proof}
+%DIFDELCMD <     %%%
+\DIFdel{Для доказательства }\DIFdelend \DIFaddbegin \DIFadd{Если \( \nu_k \) }\DIFaddend достаточно \DIFdelbegin \DIFdel{расписать выражение по координатам.
+}%DIFDELCMD < \end{proof}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdel{Заметим, что рассмотренная }\DIFdelend \DIFaddbegin \DIFadd{изолирован от других точек спектра \( A{\otimes}B \):
+    }\[
+        \DIFadd{\min_{l\neq k}
+        \lvert
+        \nu_k - \nu_l
+        \rvert
+        \geq 4\|F\|,
+    }\]
+    \DIFadd{то \( \nu_k \) --- единственное собственное значение \( A{\otimes}B - F \),
+    лежащее }\DIFaddend в \DIFdelbegin \DIFdel{предыдущем разделе
+    блочная матрица
+    представляет собой частный случай }%DIFDELCMD < \eqref{ksv:disturbkron}%%%
+\DIFdel{:
+}\DIFdelend \DIFaddbegin \DIFadd{этом круге.
+}\endgroup
+
+\DIFadd{Для примера, вернёмся к ``tiled'' матрице:
+}\DIFaddend \[
+    \DIFdelbegin %DIFDELCMD < \begin{pmatrix}
+%DIFDELCMD <         B      & \cdots & B \\
+%DIFDELCMD <         \vdots & \ddots & \vdots \\
+%DIFDELCMD <         B      & \cdots & B
+%DIFDELCMD <     \end{pmatrix} %%%
+\DIFdel{=
+    }\DIFdelend J\DIFdelbegin \DIFdel{_n \otimes }\DIFdelend \DIFaddbegin \DIFadd{_N{\otimes}}\DIFaddend B \DIFdelbegin \DIFdel{,
+        }\DIFdelend \DIFaddbegin \DIFadd{=
+    }\begin{pmatrix}
+        B & \cdots & B \\
+        \vdots & \ddots & \vdots \\
+        B & \cdots & B
+    \end{pmatrix}\DIFadd{.
+}\DIFaddend \]
+\DIFdelbegin \DIFdel{где \( J_n \) }\DIFdelend \DIFaddbegin \DIFadd{В этом случае
+    \( \nu_1=N \),
+    \( \nu_2=0 \).
+Пусть \( \lambda_1,\ldots,\lambda_M \)
+    }\DIFaddend --- \DIFdelbegin \DIFdel{матрица единиц, исследованная в первом примере}\DIFdelend \DIFaddbegin \DIFadd{спектр \( B \)}\DIFaddend .
+\DIFdelbegin \DIFdel{В }\DIFdelend \DIFaddbegin \DIFadd{Спектр \( J_N{\otimes}B \), в }\DIFaddend соответствии с \DIFdelbegin \DIFdel{леммой спектр
+    матрицы \( J_n \otimes B \)
+    }\DIFdelend \DIFaddbegin \DIFadd{последней теоремой, }\DIFaddend есть
+    \DIFdelbegin \DIFdel{\( \{ 0 \} \cup n\sigma(B) \)}\DIFdelend \DIFaddbegin \[
+        \DIFadd{\sigma(J_N{\otimes}B) = \left\{ \mu_i\lambda_j;\ i\right.}{\DIFadd{=}}\DIFadd{\overline{1,2},\ j}{\DIFadd{=}}\DIFadd{\left.\overline{1,M}\right\} = \{0\}\cup N\sigma(B).
+    }\]
+\DIFadd{Все эти собственные значения, кроме \( 0 \),
+    имеют кратность \( 1 \)
+    и изолированны друг от друга при больших \( N \)}\DIFaddend .
+\DIFdelbegin \DIFdel{Заметим, что матрица \( J_n \)
+    --- сингулярная,
+    простой структуры }\DIFdelend \DIFaddbegin \DIFadd{При этом \( \gamma=\frac1N \).
+Отсюда непосредственно следует теорема предыдущего раздела.
+}
+
+\DIFadd{Эти результаты могут быть уточнены }\DIFaddend с \DIFdelbegin \DIFdel{кратными собственными значениями:её собственному значению \( 0 \)
+    соответствует \( n{-}1 \) линейно-независимых
+    собственных векторов.
+Как мы видели }\DIFdelend \DIFaddbegin \DIFadd{помощью теоремы о расщеплении оператора~\mbox{%DIFAUXCMD
+\cite{baskakov1987theorem}}\hspace{0pt}%DIFAUXCMD
+,
+    который позволяет рассматоривать каждое собственное значение }\DIFaddend в \DIFdelbegin \DIFdel{предыдущем пункте, из-за требования попарной различности собственных значений, это привело к появлению  в матрице \( J X \) соответствующего ядру
+    блока размера \( m(n{-}1)\times m(n{-}1) \).
+}\DIFdelend \DIFaddbegin \DIFadd{отдельности.
+%DIF >  The higher the gap between a picked eigenvalue
+%DIF >      and the rest of the spectrum
+%DIF >      the higher the precision of the estimate
+%DIF >      for the corresponding eigenvalue of the perturbed matrix.
+}\DIFaddend 
+
+
+\DIFdelbegin \DIFdel{Таким образом, в будущем можно обобщить результаты
+    на случай прямого произведения матриц
+    (тензорного произведения операторов~\mbox{%DIFAUXCMD
+\cite{abraham2012manifolds}}\hspace{0pt}%DIFAUXCMD
+),
+    а~также избавиться от ограничений на обратимость и самосопряжённость.
+}%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend \smallskip\centerline{\bf Литература}
+\begingroup
+    \renewcommand{\section}[2]{}%
+%DIF <  Bibliography;
+%DIF <  In a release
+%DIF <  the %.bbl file must be supplied.
+%DIF <  It'll be `\input`-ed directly,
+%DIF <  thus bibtex dependency is avoided.
+    \DIFdelbegin %DIFDELCMD < \IfFileExists{current-problems-2017.bbl}{
+%DIFDELCMD < \begin{thebibliography}{10}
+%DIFDELCMD < 
+
+%DIFDELCMD < \bibitem{abraham2012manifolds}
+%DIFDELCMD < Ralph Abraham, Jerrold~E Marsden, and Tudor Ratiu.
+%DIFDELCMD < \newblock {\em Manifolds, tensor analysis, and applications}, volume~75.
+%DIFDELCMD < \newblock Springer Science \& Business Media, 2012.
+%DIFDELCMD < 
+
+%DIFDELCMD < \bibitem{bonacich1972factoring}
+%DIFDELCMD < Phillip Bonacich.
+%DIFDELCMD < \newblock Factoring and weighting approaches to status scores and clique
+%DIFDELCMD <   identification.
+%DIFDELCMD < \newblock {\em Journal of Mathematical Sociology}, 2(1):113--120, 1972.
+%DIFDELCMD < 
+
+%DIFDELCMD < \bibitem{chakrabarti2008epidemic}
+%DIFDELCMD < Deepayan Chakrabarti, Yang Wang, Chenxi Wang, Jurij Leskovec, and Christos
+%DIFDELCMD <   Faloutsos.
+%DIFDELCMD < \newblock Epidemic thresholds in real networks.
+%DIFDELCMD < \newblock {\em ACM Transactions on Information and System Security (TISSEC)},
+%DIFDELCMD <   10(4):1, 2008.
+%DIFDELCMD < 
+
+%DIFDELCMD < \bibitem{cvetkovic1980spectra}
+%DIFDELCMD < D~Cvetkovi{\'c}, M~Doob, and H~Sachs.
+%DIFDELCMD < \newblock Spectra of graph-theory and applications, 1980.
+%DIFDELCMD < 
+
+%DIFDELCMD < \bibitem{meyer1994sensitivity}
+%DIFDELCMD < Carl~D Meyer.
+%DIFDELCMD < \newblock Sensitivity of the stationary distribution of a markov chain.
+%DIFDELCMD < \newblock {\em SIAM Journal on Matrix Analysis and Applications},
+%DIFDELCMD <   15(3):715--728, 1994.
+%DIFDELCMD < 
+
+%DIFDELCMD < \bibitem{ilprints422}
+%DIFDELCMD < Lawrence Page, Sergey Brin, Rajeev Motwani, and Terry Winograd.
+%DIFDELCMD < \newblock The pagerank citation ranking: Bringing order to the web.
+%DIFDELCMD < \newblock Technical Report 1999-66, Stanford InfoLab, November 1999.
+%DIFDELCMD < \newblock Previous number = SIDL-WP-1999-0120.
+%DIFDELCMD < 
+
+%DIFDELCMD < \bibitem{schwartz2006fluctuation}
+%DIFDELCMD < Ira~B Schwartz and Lora Billings.
+%DIFDELCMD < \newblock Fluctuation induced almost invariant sets.
+%DIFDELCMD < \newblock Technical report, NAVAL RESEARCH LAB WASHINGTON DC PLASMA PHYSICS
+%DIFDELCMD <   DIV, 2006.
+%DIFDELCMD < 
+
+%DIFDELCMD < \bibitem{wang2003epidemic}
+%DIFDELCMD < Yang Wang, Deepayan Chakrabarti, Chenxi Wang, and Christos Faloutsos.
+%DIFDELCMD < \newblock Epidemic spreading in real networks: An eigenvalue viewpoint.
+%DIFDELCMD < \newblock In {\em Reliable Distributed Systems, 2003. Proceedings. 22nd
+%DIFDELCMD <   International Symposium on}, pages 25--34. IEEE, 2003.
+%DIFDELCMD < 
+
+%DIFDELCMD < \bibitem{baskakov1983}
+%DIFDELCMD < А.Г. Баскаков.
+%DIFDELCMD < \newblock Методы абстрактного гармонического
+%DIFDELCMD <   анализа в теории возмущений линейных
+%DIFDELCMD <   операторов.
+%DIFDELCMD < \newblock {\em Sibirskij matematiceskij zurnal}, 24(1):21--39, 1983.
+%DIFDELCMD < 
+
+%DIFDELCMD < \bibitem{baskakov-harmonic}
+%DIFDELCMD < Анатолий~Григорьевич Баскаков.
+%DIFDELCMD < \newblock Гармонический анализ линейных
+%DIFDELCMD <   операторов.
+%DIFDELCMD < \newblock 1987.
+%DIFDELCMD < 
+
+%DIFDELCMD < \end{thebibliography}
+%DIFDELCMD <     }{
+%DIFDELCMD <             \bibliography{current-problems-2017}{}
+%DIFDELCMD <             \bibliographystyle{unsrt}
+%DIFDELCMD <     }
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \begin{thebibliography}{10}
+
+\bibitem{baskakov1987theorem}
+\DIFadd{Anatoly~Grigorievich Baskakov.
+}\newblock \DIFadd{A theorem on splitting an operator, and some related questions in the
+  analytic theory of perturbations.
+}\newblock {\em \DIFadd{Mathematics of the USSR-Izvestiya}}\DIFadd{, 28(3):421, 1987.
+}
+
+\bibitem{bellman-matrices-kron}
+\DIFadd{Richard Bellman.
+}\newblock {\em \DIFadd{Introduction to matrix analysis}}\DIFadd{.
+}\newblock \DIFadd{Classics in Applied Mathematics. SIAM, 1997.
+}
+
+\bibitem{bonacich1972factoring}
+\DIFadd{Phillip Bonacich.
+}\newblock \DIFadd{Factoring and weighting approaches to status scores and clique
+  identification.
+}\newblock {\em \DIFadd{Journal of Mathematical Sociology}}\DIFadd{, 2(1):113--120, 1972.
+}
+
+\bibitem{chakrabarti2008epidemic}
+\DIFadd{Deepayan Chakrabarti, Yang Wang, Chenxi Wang, Jurij Leskovec, and Christos
+  Faloutsos.
+}\newblock \DIFadd{Epidemic thresholds in real networks.
+}\newblock {\em \DIFadd{ACM Transactions on Information and System Security (TISSEC)}}\DIFadd{,
+  10(4):1, 2008.
+}
+
+\bibitem{cvetkovic1980spectra}
+\DIFadd{D~Cvetkovi}{\DIFadd{\'c}}\DIFadd{, M~Doob, and H~Sachs.
+}\newblock \DIFadd{Spectra of graph-theory and applications, 1980.
+}
+
+\bibitem{meyer1994sensitivity}
+\DIFadd{Carl~D Meyer.
+}\newblock \DIFadd{Sensitivity of the stationary distribution of a markov chain.
+}\newblock {\em \DIFadd{SIAM Journal on Matrix Analysis and Applications}}\DIFadd{,
+  15(3):715--728, 1994.
+}
+
+\bibitem{ilprints422}
+\DIFadd{Lawrence Page, Sergey Brin, Rajeev Motwani, and Terry Winograd.
+}\newblock \DIFadd{The pagerank citation ranking: Bringing order to the web.
+}\newblock \DIFadd{Technical Report 1999-66, Stanford InfoLab, November 1999.
+}\newblock \DIFadd{Previous number = SIDL-WP-1999-0120.
+}
+
+\bibitem{schwartz2006fluctuation}
+\DIFadd{Ira~B Schwartz and Lora Billings.
+}\newblock \DIFadd{Fluctuation induced almost invariant sets.
+}\newblock \DIFadd{Technical report, NAVAL RESEARCH LAB WASHINGTON DC PLASMA PHYSICS
+  DIV, 2006.
+}
+
+\bibitem{wang2003epidemic}
+\DIFadd{Yang Wang, Deepayan Chakrabarti, Chenxi Wang, and Christos Faloutsos.
+}\newblock \DIFadd{Epidemic spreading in real networks: An eigenvalue viewpoint.
+}\newblock \DIFadd{In }{\em \DIFadd{Reliable Distributed Systems, 2003. Proceedings. 22nd
+  International Symposium on}}\DIFadd{, pages 25--34. IEEE, 2003.
+}
+
+\bibitem{baskakov1983}
+\DIFadd{Анатолий~Григорьевич Баскаков.
+}\newblock \DIFadd{Методы абстрактного гармонического
+  анализа в теории возмущений линейных
+  операторов.
+}\newblock {\em \DIFadd{Sibirskij matematiceskij zurnal}}\DIFadd{, 24(1):21--39, 1983.
+}
+
+\bibitem{baskakov-harmonic}
+\DIFadd{Анатолий~Григорьевич Баскаков.
+}\newblock \DIFadd{Гармонический анализ линейных
+  операторов.
+}\newblock \DIFadd{1987.
+}
+
+\end{thebibliography}
+\DIFaddend \endgroup
+\end{document}

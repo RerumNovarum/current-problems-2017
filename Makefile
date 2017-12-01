@@ -29,4 +29,16 @@ all: $(NAME).zip $(NAME)_flat.zip $(NAME)_pub.zip $(NAME)_local.zip
 pub/$(NAME).bbl: $(NAME).bbl
 	iconv -t $(OUTENC)//TRANSLIT $< -o $@
 
+new.tex: $(SOURCES) $(NAME).bbl
+	python flatten.py pub_$(NAME).tex > new.tex
+
+diff.tex: old.tex new.tex
+	latexdiff old.tex new.tex > $@
+
+diff.pdf: diff.tex
+	pdflatex $<
+	pdflatex $<
+	pdflatex $<
+	pdflatex $<
+
 include Makefile.rules
